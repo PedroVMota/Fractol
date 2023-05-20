@@ -1,45 +1,53 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   main.c                                             :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: pvital-m <pvital-m@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/05/20 16:33:23 by pvital-m          #+#    #+#             */
+/*   Updated: 2023/05/20 17:34:01 by pvital-m         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "fractol.h"
 
-t_win	new_program(int width, int height, char *str)
+int	ft_render_frame(t_win *main)
 {
-	void	*mlx_ptr;
-
-	mlx_ptr = mlx_init();
-	return ((t_win){mlx_ptr, mlx_new_window(mlx_ptr, width, height, str), width,
-		height});
+	place_pixel(main, main->canva->x, main->canva->y, gen_trgb(0, 255, 0, 0));
+	mlx_hook(main->win_ptr, 2, 1L << 0, key_hook, main);
+	update_image_display(main);
+	mlx_loop(main->mlx_ptr);
+	return (0);
 }
 
-t_img	new_img(int w, int h, t_win window)
+int	window_init(void)
 {
-	t_img	image;
-
-	image.win = window;
-	image.img_ptr = mlx_new_image(window.mlx_ptr, w, h);
-	image.addr = mlx_get_data_addr(image.img_ptr, &(image.bpp),
-			&(image.line_len), &(image.endian));
-	image.w = w;
-	image.h = h;
-	return (image);
-}
-
-int	main(void)
-{
-	t_win window;
-	t_img pixel;
-
-	window = new_program(500, 500, "Fractol");
-	if (!window.mlx_ptr || !window.win_ptr)
+	int		return_value;
+	t_win	tutorial;
+	t_img	img;
+	tutorial = create_window(300, 300, "fract-ol");
+	if (!tutorial.win_ptr)
 		return (2);
-	mlx_pixel_put(window.mlx_ptr, window.win_ptr, 250, 250, 0);
-	pixel = new_img(300,200, window);
+	img = new_img(300, 300, &tutorial);
+	tutorial.canva = &img;
+	return_value = ft_render_frame(&tutorial);
+	return (return_value);
+}
 
-	printf("Let's Find out what's inside our structure :D\n");
-	printf("bpp		: [%d]\n", pixel.bpp);
-	printf("line_len	: [%d]\n", pixel.line_len);
-	printf("endian		: [%d]\n", pixel.endian);
-	printf("addr		: [%p]\n", pixel.addr);
-	ft_memcpy(pixel.addr, "s4vfs4vfs4vfs4vfs4vfs4vfs4vfs4vfs4vfs4vfs4vfs4vfs4vfs4vfs4vfs4vf", 16*4);
-	mlx_put_image_to_window (pixel.win.mlx_ptr, pixel.win.win_ptr, pixel.img_ptr, 10, 10);
-	mlx_loop(window.mlx_ptr);
+int	main(int ac, char **av)
+{
+	int	status;
+
+	status = 0;
+	if (ac == 1)
+		status = print_help_screen();
+	if (ac == 2)
+	{
+		if (ft_check_paramters(av[1]))
+			status = window_init();
+		else
+			status = print_help_screen();
+	}
 	return (0);
 }
