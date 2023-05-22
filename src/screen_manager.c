@@ -6,7 +6,7 @@
 /*   By: pvital-m <pvital-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/20 16:25:51 by pvital-m          #+#    #+#             */
-/*   Updated: 2023/05/22 15:50:38 by pvital-m         ###   ########.fr       */
+/*   Updated: 2023/05/22 20:31:00 by pvital-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,8 @@
 
 void	update_image_display(t_win *main)
 {
-	mlx_put_image_to_window(main->mlx_ptr, main->win_ptr, \
-        main->canva->img_ptr,
-		0, 0);
+	mlx_put_image_to_window(main->mlx_ptr, main->win_ptr, main->canva->img_ptr,
+			0, 0);
 }
 
 void	place_pixel(t_win *main, int x, int y, int color)
@@ -46,13 +45,8 @@ t_img	new_img(int w, int h, t_win *window)
 	return (image);
 }
 
-t_win	create_window(int w, int h, char *name)
+void	create_window(t_win *main, char *name)
 {
-	t_win main;
-
-	main.mlx_ptr = mlx_init();
-	main.win_ptr = mlx_new_window(main.mlx_ptr, w, h, name);
-	main.width = w;
-	main.height = h;
-	return (main);
+	main->mlx_ptr = mlx_init();
+	main->win_ptr = mlx_new_window(main->mlx_ptr, main->width, main->height, name);
 }

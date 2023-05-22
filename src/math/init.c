@@ -21,15 +21,21 @@
     }
 } */
 
-int	ft_fractal_mandelbro(t_complex *real_and_imaginary, int loopreal_and_imaginary,	int x)
+int	ft_fractal_mandelbrot(t_win *screen, int interaction_max)
 {
 	//f(x) = x2 + c
+
+	ft_printf("==================\n");
+	ft_printf("Offset X  Start %d of %d\n", screen->ratio->x_start, screen->ratio->x_end);
+	ft_printf("Offset Y  Start %d of %d\n", screen->ratio->y_start, screen->ratio->y_end);
+	ft_printf("==================\n");
 	int interactions = 0;
-	real_and_imaginary->imaginary = 0;
-	real_and_imaginary->real = 0;
-	while (interactions < x)
+	double old_real = screen->formula->real;
+	double old_imaginary = screen->formula->imaginary;
+
+	while (interactions < interaction_max)
 	{
-        
+		double a = 
 		interactions++;
 	}
 	return (interactions);

@@ -21,7 +21,7 @@
 # define SCROLL_DOWN 5
 
 # define WIDTH 800
-# define HEIGHT 600
+# define HEIGHT 800
 
 typedef struct s_img
 {
@@ -43,7 +43,18 @@ typedef struct s_complex
 {
 	double			real;
 	double			imaginary;
+
 }					t_complex;
+
+typedef struct s_map
+{
+	double			x_start;
+	double			x_end;
+	double			y_start;
+	double			y_end;
+	struct s_win	*win;
+
+}					t_map;
 
 typedef struct s_win
 {
@@ -55,10 +66,15 @@ typedef struct s_win
 	int				width;
 	int				height;
 	t_complex		*formula;
+	t_map			*ratio;
 }					t_win;
 
+//Struct initialization
+t_win				*screen(void);
+
+int					ft_fractal_mandelbrot(t_win *screen, int interaction_max);
 // Screen Manager
-t_win				create_window(int w, int h, char *name);
+void				create_window(t_win *main, char *name);
 t_img				new_img(int w, int h, t_win *window);
 void				update_image_display(t_win *main);
 void				place_pixel(t_win *main, int x, int y, int color);
