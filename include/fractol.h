@@ -20,18 +20,14 @@
 # define SCROLL_UP 4
 # define SCROLL_DOWN 5
 
-typedef struct s_win
-{
-	void			*mlx_ptr;
-	void			*win_ptr;
-	int				width;
-	int				height;
-	struct s_img	*canva;
-}					t_win;
+# define WIDTH 800
+# define HEIGHT 600
 
 typedef struct s_img
 {
-	t_win			*win;
+	//Connection to the window
+	struct s_win	*win;
+	//Connection to the window
 	void			*img_ptr;
 	char			*addr;
 	int				bit_per_pixel;
@@ -42,6 +38,24 @@ typedef struct s_img
 	int				x;
 	int				y;
 }					t_img;
+
+typedef struct s_complex
+{
+	double			real;
+	double			imaginary;
+}					t_complex;
+
+typedef struct s_win
+{
+	//Connection to the image
+	t_img			*canva;
+	//Connection to the image
+	void			*mlx_ptr;
+	void			*win_ptr;
+	int				width;
+	int				height;
+	t_complex		*formula;
+}					t_win;
 
 // Screen Manager
 t_win				create_window(int w, int h, char *name);
@@ -54,11 +68,6 @@ int					key_hook(int keycode, t_win *window);
 
 //color
 int					gen_trgb(int opacity, int red, int green, int blue);
-int					get_opacity(int trgb);
-int					get_r(int trgb);
-int					get_g(int trgb);
-int					get_b(int trgb);
-
 //canvas painting
 // Parsing Section
 int					print_help_screen(void);

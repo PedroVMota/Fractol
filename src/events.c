@@ -6,7 +6,7 @@
 /*   By: pvital-m <pvital-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/20 11:11:00 by pvital-m          #+#    #+#             */
-/*   Updated: 2023/05/22 15:32:37 by pvital-m         ###   ########.fr       */
+/*   Updated: 2023/05/22 15:55:52 by pvital-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,7 @@ static void	close_program(t_win *vars)
 
 int	key_hook(int keycode, t_win *window)
 {
+	// ft_printf("keycode: %d\n", keycode);
 	if (keycode == ESC)
 		close_program(window);
 	if (keycode == RIGHT)

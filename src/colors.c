@@ -6,7 +6,7 @@
 /*   By: pvital-m <pvital-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/20 09:05:26 by pvital-m          #+#    #+#             */
-/*   Updated: 2023/05/20 16:33:15 by pvital-m         ###   ########.fr       */
+/*   Updated: 2023/05/22 18:10:35 by pvital-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,22 +19,8 @@ int	gen_trgb(int opacity, int red, int green, int blue)
 	return (opacity << 24 | red << 16 | green << 8 | blue);
 }
 
-int	get_opacity(int trgb)
-{
-	return ((trgb >> 24) & 0XFF);
-}
 
-int	get_r(int trgb)
+void ft_color_palete(t_win *screen, int interactions)
 {
-	return ((trgb >> 16) & 0XFF);
-}
-
-int	get_g(int trgb)
-{
-	return ((trgb >> 8) & 0XFF);
-}
-
-int	get_b(int trgb)
-{
-	return (trgb & 0xFF);
+	
 }

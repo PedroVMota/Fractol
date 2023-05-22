@@ -6,7 +6,7 @@
 /*   By: pvital-m <pvital-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/20 16:33:23 by pvital-m          #+#    #+#             */
-/*   Updated: 2023/05/20 17:34:01 by pvital-m         ###   ########.fr       */
+/*   Updated: 2023/05/22 17:03:30 by pvital-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,15 +23,18 @@ int	ft_render_frame(t_win *main)
 
 int	window_init(void)
 {
-	int		return_value;
-	t_win	tutorial;
-	t_img	img;
-	tutorial = create_window(300, 300, "fract-ol");
-	if (!tutorial.win_ptr)
+	t_win		screen;
+	t_img		img;
+	t_complex	formula;
+	int			return_value;
+
+	
+	screen = create_window(WIDTH, HEIGHT, "fract-ol");
+	if (!screen.win_ptr)
 		return (2);
-	img = new_img(300, 300, &tutorial);
-	tutorial.canva = &img;
-	return_value = ft_render_frame(&tutorial);
+	img = new_img(WIDTH, HEIGHT, &screen);
+	screen.canva = &img;
+	return_value = ft_render_frame(&screen);
 	return (return_value);
 }
 
