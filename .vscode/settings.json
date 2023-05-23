@@ -7,6 +7,7 @@
         "ft_printf.h": "c",
         "fcntl.h": "c",
         "stdlib.h": "c",
-        "ft_colors.h": "c"
+        "ft_colors.h": "c",
+        "mlx.h": "c"
     }
 }

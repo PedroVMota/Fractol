@@ -6,7 +6,7 @@
 /*   By: pvital-m <pvital-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/20 16:25:51 by pvital-m          #+#    #+#             */
-/*   Updated: 2023/05/22 20:31:00 by pvital-m         ###   ########.fr       */
+/*   Updated: 2023/05/23 17:03:28 by pvital-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,23 +30,27 @@ void	place_pixel(t_win *main, int x, int y, int color)
 	}
 }
 
-t_img	new_img(int w, int h, t_win *window)
+t_img	*new_img(int w, int h, t_win *window)
 {
-	t_img	image;
+	t_img	*image;
 
-	image.win = window;
-	image.w = w;
-	image.h = h;
-	image.img_ptr = mlx_new_image(window->mlx_ptr, w, h);
-	image.addr = mlx_get_data_addr(image.img_ptr, &(image.bit_per_pixel),
-			&(image.line_len), &(image.endian));
-	image.x = 20;
-	image.y = 20;
+	image = malloc(sizeof(t_img));
+	if (!image)
+		return (NULL);
+	image->win = window;
+	image->w = w;
+	image->h = h;
+	image->img_ptr = mlx_new_image(window->mlx_ptr, w, h);
+	image->addr = mlx_get_data_addr(image->img_ptr, &(image->bit_per_pixel),
+			&(image->line_len), &(image->endian));
+	image->x = 20;
+	image->y = 20;
 	return (image);
 }
 
 void	create_window(t_win *main, char *name)
 {
 	main->mlx_ptr = mlx_init();
-	main->win_ptr = mlx_new_window(main->mlx_ptr, main->width, main->height, name);
+	main->win_ptr = mlx_new_window(main->mlx_ptr, main->width, main->height,
+			name);
 }

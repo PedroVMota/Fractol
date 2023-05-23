@@ -60,22 +60,24 @@ typedef struct s_win
 {
 	//Connection to the image
 	t_img			*canva;
+	t_complex		*formula;
+	t_map			*ratio;
 	//Connection to the image
 	void			*mlx_ptr;
 	void			*win_ptr;
 	int				width;
 	int				height;
-	t_complex		*formula;
-	t_map			*ratio;
 }					t_win;
 
 //Struct initialization
 t_win				*screen(void);
+void				initialize_data(t_win *screen);
+void				print_data(t_win *screen);
 
 int					ft_fractal_mandelbrot(t_win *screen, int interaction_max);
 // Screen Manager
 void				create_window(t_win *main, char *name);
-t_img				new_img(int w, int h, t_win *window);
+t_img				*new_img(int w, int h, t_win *window);
 void				update_image_display(t_win *main);
 void				place_pixel(t_win *main, int x, int y, int color);
 

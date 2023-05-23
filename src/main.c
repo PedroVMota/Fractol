@@ -6,7 +6,7 @@
 /*   By: pvital-m <pvital-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/20 16:33:23 by pvital-m          #+#    #+#             */
-/*   Updated: 2023/05/22 20:24:56 by pvital-m         ###   ########.fr       */
+/*   Updated: 2023/05/23 17:22:36 by pvital-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,16 +23,14 @@ int	ft_render_frame(t_win *main)
 
 int	window_init(void)
 {
-	t_img		img;
-	t_complex	formula;
-	int			return_value;
+	int	return_value;
 
+	initialize_data((screen()));
 	create_window(screen(), "fract-ol");
 	if (!screen()->win_ptr)
 		return (2);
-	img = new_img(WIDTH, HEIGHT, screen());
+	screen()->canva = new_img(WIDTH, HEIGHT, screen());
 	ft_fractal_mandelbrot(screen(), 300);
-	screen()->canva = &img;
 	return_value = ft_render_frame(screen());
 	return (return_value);
 }
