@@ -3,17 +3,18 @@
 /*                                                        :::      ::::::::   */
 /*   init.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: pvital-m <pvital-m@student.42.fr>          +#+  +:+       +#+        */
+/*   By: pvital-m <pvital@student.42lisbon.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/22 20:20:30 by pvital-m          #+#    #+#             */
-/*   Updated: 2023/05/24 22:02:02 by pvital-m         ###   ########.fr       */
+/*   Updated: 2023/05/24 23:32:17 by pvital-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fractol.h"
 
-void	initialize_data(t_win *screen)
+void	initialize_data(t_win *screen, char *n)
 {
+	screen->interactions = ft_atoi(n);
 	screen->height = HEIGHT;
 	screen->width = WIDTH;
 	screen->mlx_ptr = NULL;
