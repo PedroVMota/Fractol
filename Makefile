@@ -46,9 +46,6 @@ re: fclean all
 norm :
 	@norminette -R CheckForbiddenSourceHeader $(SRCS)
 
-r:
-	make re && make clean && clear && ./so_long
-
 watch:
 	@printf "Watching files..\n"
 	@while true; do $(MAKE) -q --no-print-directory || $(MAKE) --no-print-directory; sleep 2; done;

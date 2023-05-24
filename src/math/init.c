@@ -1,21 +1,34 @@
 #include "fractol.h"
 
-int	ft_fractal_mandelbrot(t_win *screen, int interaction_max)
+double	map(float x, float input_min, float input_max, float output_min,
+		float output_max)
 {
-	//f(x) = x2 + c
-	print_data(screen);
+	return (((x - input_min) / (input_max - input_min)) * (output_max
+			- output_min) + output_min);
+}
 
-	// printf("Ratio x_start: %f\n", screen->ratio->x_start);
-	// printf("Ratio x_end: %f\n", screen->ratio->x_end);
-	// printf("Ratio y_start: %f\n", screen->ratio->y_start);
-	// printf("Ratio y_end: %f\n", screen->ratio->y_end);
-	int interactions = 0;
-	double old_real = screen->formula->real;
-	double old_imaginary = screen->formula->imaginary;
+int	ft_fractal_mandelbrot(t_win *screen, int interaction_max, int pixel_x,
+		int pixel_y)
 
+{
+	int interactions;
+	double ratio_x;
+	double ratio_y;
+	double real_part;
+	double imaginary_part;
+
+	interactions = 0;
+	ratio_x = map(pixel_x, 0, screen->width, -2, 2);
+	ratio_y = map(pixel_y, 0, screen->height, -2, 2);
 	while (interactions < interaction_max)
 	{
-		double a = 
+		real_part = pow(ratio_x, 2) - pow(ratio_y, 2);
+		imaginary_part = 2 * ratio_x * ratio_y;
+
+		ratio_x = real_part;
+		ratio_y = imaginary_part;
+		if (fabs(ratio_x + ratio_y) > 4.0)
+			break ;
 		interactions++;
 	}
 	return (interactions);

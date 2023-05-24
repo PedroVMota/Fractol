@@ -6,7 +6,7 @@
 /*   By: pvital-m <pvital-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/20 16:33:23 by pvital-m          #+#    #+#             */
-/*   Updated: 2023/05/23 17:22:36 by pvital-m         ###   ########.fr       */
+/*   Updated: 2023/05/24 15:42:10 by pvital-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,18 @@
 
 int	ft_render_frame(t_win *main)
 {
-	place_pixel(main, main->canva->x, main->canva->y, gen_trgb(0, 255, 0, 0));
+	int	inte;
+
+	print_data(screen());
+	for (int x = 0; x < WIDTH; x++)
+		for (int y = 0; y < HEIGHT; y++)
+		{
+			inte = ft_fractal_mandelbrot(screen(), 500, x, y);
+			if (inte == 500)
+				place_pixel(main, x, y, gen_trgb(0, 255, 255, 255));
+			else
+				place_pixel(main, x, y, gen_trgb(0, 0, 0, 0));
+		}
 	mlx_hook(main->win_ptr, 2, 1L << 0, key_hook, main);
 	update_image_display(main);
 	mlx_loop(main->mlx_ptr);
@@ -25,13 +36,12 @@ int	window_init(void)
 {
 	int	return_value;
 
-	initialize_data((screen()));
+	initialize_data(screen());
 	create_window(screen(), "fract-ol");
 	if (!screen()->win_ptr)
 		return (2);
 	screen()->canva = new_img(WIDTH, HEIGHT, screen());
-	ft_fractal_mandelbrot(screen(), 300);
-	return_value = ft_render_frame(screen());
+	ft_render_frame(screen());
 	return (return_value);
 }
 

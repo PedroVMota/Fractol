@@ -67,14 +67,17 @@ typedef struct s_win
 	void			*win_ptr;
 	int				width;
 	int				height;
+	int				interactions;
 }					t_win;
 
+# define HERE printf("Here\n");
 //Struct initialization
 t_win				*screen(void);
 void				initialize_data(t_win *screen);
 void				print_data(t_win *screen);
 
-int					ft_fractal_mandelbrot(t_win *screen, int interaction_max);
+int					ft_fractal_mandelbrot(t_win *screen, int interaction_max,
+						int pixel_x, int pixel_y);
 // Screen Manager
 void				create_window(t_win *main, char *name);
 t_img				*new_img(int w, int h, t_win *window);

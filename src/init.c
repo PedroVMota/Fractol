@@ -6,7 +6,7 @@
 /*   By: pvital-m <pvital-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/22 20:20:30 by pvital-m          #+#    #+#             */
-/*   Updated: 2023/05/23 17:18:08 by pvital-m         ###   ########.fr       */
+/*   Updated: 2023/05/23 21:05:30 by pvital-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 
 void	initialize_data(t_win *screen)
 {
+	screen->interactions = 100;
 	screen->height = HEIGHT;
 	screen->width = WIDTH;
 	screen->ratio = malloc(sizeof(t_map));
