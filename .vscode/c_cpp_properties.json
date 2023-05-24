@@ -4,7 +4,8 @@
             "name": "Linux",
             "includePath": [
                 "include/",
-                "mlx_linux/"
+                "mlx_linux/",
+				"minilbx_opengl/"
             ],
             "defines": [],
             "compilerPath": "/usr/bin/clang",

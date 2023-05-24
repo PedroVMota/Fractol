@@ -1,34 +1,36 @@
-CC			= 	cc -fsanitize=leak -g
-# CC			= 	cc
-CFLAGS		= 	-Wall -Wextra -Werror #-fsanitize=address
+# CC			= 	cc -fsanitize=leak -g
+CC			= 	cc -g  -fsanitize=address
+CFLAGS		= 	-Wall -Wextra -Werror  #-fsanitize=address
 RM			= 	/bin/rm -f
 NAME		= 	fractol
 INCLUDES	= 	-I include/
 SRCS		=   $(shell find src/ -name '*.c')
 OBJS		= 	$(SRCS:.c=.o)
 
-
-MLX_LIB_DIR = mlx_linux/
-#directories with .h
-
-MLX_INCLUDE = -Imlx_linux
+UNAME := $(shell uname)
 
 COLOUR_GREEN=\033[7;1;32m
 COLOUR_END=\033[0m
 COLOUR_YELLOW=\033[7;1;33m
 
-MLX_FLAGS = -L$(MLX_LIB_DIR) -lmlx_Linux -L/usr/lib -lXext -lX11 -lm -lz
+ifeq ($(UNAME), Darwin)
+	MLX_LIB_DIR = minilbx_opengl/
+	MLX_INCLUDE = -Iminilbx_opengl
+	MLX_FLAGS = -L$(MLX_LIB_DIR) -lmlx -framework OpenGL -framework AppKit
+else
+	MLX_LIB_DIR = mlx_linux/
+	MLX_INCLUDE = -Imlx_linux
+	MLX_FLAGS = -L$(MLX_LIB_DIR) -lmlx_Linux -L/usr/lib -lXext -lX11 -lm -lz
+endif
 
-# ^ primeira dependencia
-# @ nome da regra
 all: $(NAME) 
 
 $(NAME): $(OBJS)
 		@make -C ./libft/ --no-print
-		$(CC) $(CFLAGS) $(^) libft/libft.a $(MLX_FLAGS) -o $(@)
+		@$(CC) $(CFLAGS) $(^) libft/libft.a $(MLX_FLAGS) -o $(@)
 
 %.o: %.c
-	$(CC) $(INCLUDES) $(MLX_INCLUDE) -c $(^) -o $(@)
+	@$(CC) $(INCLUDES) $(MLX_INCLUDE) -c $(^) -o $(@)
 
 bonus: all
 
@@ -42,9 +44,6 @@ fclean: clean
 	@echo "\033[0;31mREMOVED Fractol EXECUTABLE\033[0m"
 
 re: fclean all
-
-norm :
-	@norminette -R CheckForbiddenSourceHeader $(SRCS)
 
 watch:
 	@printf "Watching files..\n"
