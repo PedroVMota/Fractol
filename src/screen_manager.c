@@ -6,7 +6,7 @@
 /*   By: pvital-m <pvital-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/20 16:25:51 by pvital-m          #+#    #+#             */
-/*   Updated: 2023/05/25 11:02:47 by pvital-m         ###   ########.fr       */
+/*   Updated: 2023/05/25 12:43:03 by pvital-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ t_img	*new_img(int w, int h, t_win *window)
 	image->win = window;
 	image->w = w;
 	image->h = h;
-	image->img_ptr = mlx_new_image(window->mlx_ptr, w, h);
+	image->img_ptr = mlx_new_image(window->mlx_ptr, w , h);
 	image->addr = mlx_get_data_addr(image->img_ptr, &(image->bit_per_pixel),
 			&(image->line_len), &(image->endian));
 	image->x = 20;

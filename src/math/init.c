@@ -14,8 +14,8 @@ int	ft_fractal_mandelbrot(t_win *screen, int interaction_max, int pixel_x,
 	int interactions;
 
 	interactions = 0;
-	screen->mandelbrot->ratio_x = map(pixel_x, 0, screen->width, -2, 2);
-	screen->mandelbrot->ratio_y = map(pixel_y, 0, screen->height, -2, 2);
+	screen->mandelbrot->ratio_x = map(pixel_x + screen->image_x, 0, screen->width , -2, 2);
+	screen->mandelbrot->ratio_y = map(pixel_y + screen->image_y, 0, screen->height , -2, 2);
 	screen->mandelbrot->constant_a = screen->mandelbrot->ratio_x;
 	screen->mandelbrot->constant_b = screen->mandelbrot->ratio_y;
 	while (interactions < interaction_max)
@@ -30,7 +30,7 @@ int	ft_fractal_mandelbrot(t_win *screen, int interaction_max, int pixel_x,
 		screen->mandelbrot->ratio_y = screen->mandelbrot->imaginary_part
 			+ screen->mandelbrot->constant_b;
 		if (fabs(screen->mandelbrot->ratio_x
-				+ screen->mandelbrot->ratio_y) > 4.0)
+				+ screen->mandelbrot->ratio_y) > 3.0)
 			break ;
 		interactions++;
 	}
@@ -42,8 +42,8 @@ int	ft_fractal_julia(t_win *screen, int interaction_max, int pixel_x,
 {
 	int interactions;
 	interactions = 0;
-	screen->julia->ratio_x = map(pixel_x, 0, screen->width, -2, 2);
-	screen->julia->ratio_y = map(pixel_y, 0, screen->height, -2, 2);
+	screen->julia->ratio_x = map(pixel_x , 0, screen->width + screen->image_x, -2, 2);
+	screen->julia->ratio_y = map(pixel_y , 0, screen->height + screen->image_y, -2, 2);
 
 	while (interactions < interaction_max)
 	{
@@ -57,7 +57,7 @@ int	ft_fractal_julia(t_win *screen, int interaction_max, int pixel_x,
 		screen->julia->ratio_y = screen->julia->imaginary_part
 			+ screen->julia->constant_b;
 
-		if (fabs(screen->julia->ratio_x + screen->julia->ratio_y) > 4.0)
+		if (fabs(screen->julia->ratio_x + screen->julia->ratio_y) > 14.0)
 			break ;
 
 		interactions++;

@@ -6,7 +6,7 @@
 /*   By: pvital-m <pvital-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/20 11:11:00 by pvital-m          #+#    #+#             */
-/*   Updated: 2023/05/25 11:03:36 by pvital-m         ###   ########.fr       */
+/*   Updated: 2023/05/25 13:26:14 by pvital-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,7 @@ void	julia_calculation(t_win *screen, int max)
 	while (x < WIDTH)
 	{
 		y = 0;
-		while (y < HEIGHT)
+		while (y < HEIGHT + 500)
 		{
 			inte = ft_fractal_julia(screen, max, x, y);
 			color_palette(screen, inte, x, y);
@@ -67,10 +67,9 @@ void	julia_calculation(t_win *screen, int max)
 
 void	move_right(t_win *screen)
 {
-	if (screen->image_x - 10 > 1000)
+	if (screen->image_x + 0.5 > 1000)
 		return ;
-	(screen->image_x += 10);
-	mlx_clear_window(screen->mlx_ptr, screen->win_ptr);
+	(screen->image_x += 0.5);
 	if (screen->option == 0)
 		mandelbro_calculation(screen, 300);
 	if (screen->option == 1)
@@ -78,10 +77,9 @@ void	move_right(t_win *screen)
 }
 void	move_left(t_win *screen)
 {
-	if (screen->image_x - 10 < -1000)
+	if (screen->image_x - 50 < -1000)
 		return ;
-	(screen->image_x -= 10);
-	mlx_clear_window(screen->mlx_ptr, screen->win_ptr);
+	(screen->image_x -= 50);
 	if (screen->option == 0)
 		mandelbro_calculation(screen, 300);
 	if (screen->option == 1)
@@ -97,5 +95,6 @@ int	key_hook(int keycode, t_win *window)
 	if (keycode == 65361)
 		move_left(window);
 	update_image_display(window);
+	printf("Image Updated!\n");
 	return (0);
 }
