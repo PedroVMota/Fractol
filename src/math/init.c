@@ -14,8 +14,14 @@ int	ft_fractal_mandelbrot(t_win *screen, int interaction_max, int pixel_x,
 	int interactions;
 
 	interactions = 0;
-	screen->mandelbrot->ratio_x = map(pixel_x + screen->image_x, 0, screen->width , -2, 2);
-	screen->mandelbrot->ratio_y = map(pixel_y + screen->image_y, 0, screen->height , -2, 2);
+
+	/*
+		zoom effect
+	*/
+	screen->mandelbrot->ratio_x = map(pixel_x, 0, screen->width, -2 * screen->offset_x, 2 * screen->zoom);
+	screen->mandelbrot->ratio_y = map(pixel_y, 0, screen->height, -2 * screen->offset_y, 2 * screen->zoom);
+	/* screen->mandelbrot->ratio_x = map(pixel_x, 0, screen->width, -2, 2);
+	screen->mandelbrot->ratio_y = map(pixel_y, 0, screen->height, -2, 2); */
 	screen->mandelbrot->constant_a = screen->mandelbrot->ratio_x;
 	screen->mandelbrot->constant_b = screen->mandelbrot->ratio_y;
 	while (interactions < interaction_max)
@@ -41,10 +47,10 @@ int	ft_fractal_julia(t_win *screen, int interaction_max, int pixel_x,
 		int pixel_y)
 {
 	int interactions;
-	interactions = 0;
-	screen->julia->ratio_x = map(pixel_x , 0, screen->width + screen->image_x, -2, 2);
-	screen->julia->ratio_y = map(pixel_y , 0, screen->height + screen->image_y, -2, 2);
 
+	interactions = 0;
+	screen->julia->ratio_x = map(pixel_x + screen->mouse_x, 0, screen->width, -2 * screen->offset_x, 2 + screen->zoom);
+	screen->julia->ratio_y = map(pixel_y + screen->mouse_y, 0, screen->height, -2 * screen->offset_y, 2 + screen->zoom);
 	while (interactions < interaction_max)
 	{
 		screen->julia->real_part = pow(screen->julia->ratio_x, 2)
@@ -56,7 +62,6 @@ int	ft_fractal_julia(t_win *screen, int interaction_max, int pixel_x,
 			+ screen->julia->constant_a;
 		screen->julia->ratio_y = screen->julia->imaginary_part
 			+ screen->julia->constant_b;
-
 		if (fabs(screen->julia->ratio_x + screen->julia->ratio_y) > 14.0)
 			break ;
 

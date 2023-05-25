@@ -6,7 +6,7 @@
 /*   By: pvital-m <pvital-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/22 20:20:30 by pvital-m          #+#    #+#             */
-/*   Updated: 2023/05/25 13:23:52 by pvital-m         ###   ########.fr       */
+/*   Updated: 2023/05/25 15:44:46 by pvital-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,8 +18,11 @@ int	initialize_data(t_win *screen, int fractal)
 	screen->width = WIDTH;
 	screen->mlx_ptr = NULL;
 	screen->win_ptr = NULL;
-	screen->image_x = 1;
-	screen->image_y = 1;
+	screen->image_x = 0;
+	screen->image_y = 0;
+	screen->offset_x = 1;
+	screen->offset_y = 1;
+	screen->zoom = 0;
 	screen->option = fractal;
 	if (fractal == 0)
 	{
@@ -60,6 +63,12 @@ void	print_data(t_win *screen)
 		printf("Screen win pinter: %p\n", screen->win_ptr);
 		printf("Mouse X %d\n", screen->mouse_x);
 		printf("Mouse Y %d\n", screen->mouse_y);
+		printf("Image X %d\n", screen->image_x);
+		printf("Image Y %d\n", screen->image_y);
+		printf("Offset X %f\n", screen->offset_x);
+		printf("Offset Y %f\n", screen->offset_y);
+		printf("Zoom %f\n", screen->zoom);
+		printf("Option %s\n", (screen->option == 0) ? "Mandelbrot" : "Julia");
 		if (screen->mandelbrot)
 		{
 			printf("Mandelbrot ratio X %f\n", screen->mandelbrot->ratio_x);

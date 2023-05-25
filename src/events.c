@@ -6,7 +6,7 @@
 /*   By: pvital-m <pvital-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/20 11:11:00 by pvital-m          #+#    #+#             */
-/*   Updated: 2023/05/25 13:26:14 by pvital-m         ###   ########.fr       */
+/*   Updated: 2023/05/25 15:43:50 by pvital-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,9 +67,10 @@ void	julia_calculation(t_win *screen, int max)
 
 void	move_right(t_win *screen)
 {
-	if (screen->image_x + 0.5 > 1000)
+	mlx_clear_window(screen->mlx_ptr, screen->win_ptr);
+	if (screen->image_x + 250 > 1000)
 		return ;
-	(screen->image_x += 0.5);
+	(screen->image_x += 250);
 	if (screen->option == 0)
 		mandelbro_calculation(screen, 300);
 	if (screen->option == 1)
@@ -77,9 +78,10 @@ void	move_right(t_win *screen)
 }
 void	move_left(t_win *screen)
 {
-	if (screen->image_x - 50 < -1000)
+	mlx_clear_window(screen->mlx_ptr, screen->win_ptr);
+	if (screen->image_x - 250 < -1000)
 		return ;
-	(screen->image_x -= 50);
+	(screen->image_x -= 250);
 	if (screen->option == 0)
 		mandelbro_calculation(screen, 300);
 	if (screen->option == 1)
@@ -94,7 +96,31 @@ int	key_hook(int keycode, t_win *window)
 		move_right(window);
 	if (keycode == 65361)
 		move_left(window);
+	system("clear");
 	update_image_display(window);
-	printf("Image Updated!\n");
+	return (0);
+}
+int	mouse_hook(int button, int x, int y, t_win *window)
+
+{
+	printf("Mouse button pressed %d\n", button);
+	if (button == 4)
+	{
+		window->zoom *= 1.1;
+		window->mouse_x = x;
+		window->mouse_y = y;
+	}
+	if (button == 5)
+	{
+		window->zoom /= 1.1;
+		window->mouse_x = x;
+		window->mouse_y = y;
+	}
+	if (window->option == 0)
+		mandelbro_calculation(window, 300);
+	if (window->option == 1)
+		julia_calculation(window, 300);
+	update_image_display(window);
+	print_data(window);
 	return (0);
 }

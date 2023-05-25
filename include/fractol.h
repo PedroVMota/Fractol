@@ -70,7 +70,10 @@ typedef struct s_win
 	int				mouse_y;
 	int				image_x;
 	int				image_y;
-	int option;
+	double			offset_x;
+	double			offset_y;
+	double			zoom;
+	int				option;
 }					t_win;
 
 # define HERE printf("Here\n");
@@ -87,7 +90,7 @@ void				create_window(t_win *main, char *name);
 void				update_image_display(t_win *main);
 void				place_pixel(t_win *main, int x, int y, int color);
 int					key_hook(int keycode, t_win *window);
-int					key_hook_mouse(int keycode, t_win *window);
+int				mouse_hook(int button, int x, int y, t_win *window);
 int					gen_trgb(int opacity, int red, int green, int blue);
 void				color_palette(t_win *main, int inte, int x, int y);
 int					print_help_screen(void);

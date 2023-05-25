@@ -6,7 +6,7 @@
 /*   By: pvital-m <pvital-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/20 16:33:23 by pvital-m          #+#    #+#             */
-/*   Updated: 2023/05/25 12:33:25 by pvital-m         ###   ########.fr       */
+/*   Updated: 2023/05/25 15:22:47 by pvital-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,8 +22,7 @@ int	ft_render_frame(t_win *main, int option)
 	if (option == 1)
 		julia_calculation(main, 300);
 	mlx_key_hook(main->win_ptr, key_hook, main);
-	// mlx_mouse_get_pos(main->mlx_ptr, main->win_ptr, main->mouse_x,
-	// main->mouse_y);
+	mlx_mouse_hook(main->win_ptr, mouse_hook, main);
 	update_image_display(main);
 	mlx_loop(main->mlx_ptr);
 	return (0);
