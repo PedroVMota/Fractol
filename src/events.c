@@ -23,7 +23,7 @@ static void	close_program(t_win *screen)
 	exit(1);
 }
 
-void	mandelbro_calculation(t_win *screen, int max)
+void	mandelbro_calculation(t_win *screen)
 {
 	int	inte;
 	int	x;
@@ -36,7 +36,7 @@ void	mandelbro_calculation(t_win *screen, int max)
 		y = 0;
 		while (y < HEIGHT)
 		{
-			inte = ft_fractal_mandelbrot(screen, max, x, y);
+			inte = ft_fractal_mandelbrot(screen, x, y);
 			color_palette(screen, inte, x, y);
 			y++;
 		}
@@ -44,7 +44,7 @@ void	mandelbro_calculation(t_win *screen, int max)
 	}
 }
 
-void	julia_calculation(t_win *screen, int max)
+void	julia_calculation(t_win *screen)
 {
 	int	inte;
 	int	x;
@@ -57,7 +57,7 @@ void	julia_calculation(t_win *screen, int max)
 		y = 0;
 		while (y < HEIGHT + 500)
 		{
-			inte = ft_fractal_julia(screen, max, x, y);
+			inte = ft_fractal_julia(screen, x, y);
 			color_palette(screen, inte, x, y);
 			y++;
 		}
@@ -67,25 +67,27 @@ void	julia_calculation(t_win *screen, int max)
 
 void	move_right(t_win *screen)
 {
-	mlx_clear_window(screen->mlx_ptr, screen->win_ptr);
+	ft_bzero(screen->canva->addr, sizeof(char));
 	if (screen->image_x + 250 > 1000)
 		return ;
 	(screen->image_x += 250);
 	if (screen->option == 0)
-		mandelbro_calculation(screen, 300);
+		mandelbro_calculation(screen);
 	if (screen->option == 1)
-		julia_calculation(screen, 300);
+		julia_calculation(screen);
+	// update_image_display(screen);
 }
 void	move_left(t_win *screen)
 {
-	mlx_clear_window(screen->mlx_ptr, screen->win_ptr);
+	ft_bzero(screen->canva->addr, sizeof(char));
 	if (screen->image_x - 250 < -1000)
 		return ;
 	(screen->image_x -= 250);
 	if (screen->option == 0)
-		mandelbro_calculation(screen, 300);
+		mandelbro_calculation(screen);
 	if (screen->option == 1)
-		julia_calculation(screen, 300);
+		julia_calculation(screen);
+	// update_image_display(screen);
 }
 
 int	key_hook(int keycode, t_win *window)
@@ -96,14 +98,11 @@ int	key_hook(int keycode, t_win *window)
 		move_right(window);
 	if (keycode == 65361)
 		move_left(window);
-	system("clear");
-	update_image_display(window);
 	return (0);
 }
 int	mouse_hook(int button, int x, int y, t_win *window)
 
 {
-	printf("Mouse button pressed %d\n", button);
 	if (button == 4)
 	{
 		window->zoom *= 1.1;
@@ -117,10 +116,10 @@ int	mouse_hook(int button, int x, int y, t_win *window)
 		window->mouse_y = y;
 	}
 	if (window->option == 0)
-		mandelbro_calculation(window, 300);
+		mandelbro_calculation(window);
 	if (window->option == 1)
-		julia_calculation(window, 300);
-	update_image_display(window);
+		julia_calculation(window);
 	print_data(window);
+	update_image_display(window);
 	return (0);
 }

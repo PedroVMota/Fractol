@@ -22,7 +22,8 @@ int	initialize_data(t_win *screen, int fractal)
 	screen->image_y = 0;
 	screen->offset_x = 1;
 	screen->offset_y = 1;
-	screen->zoom = 0;
+	screen->interactions = 150;
+	screen->zoom = 1;
 	screen->option = fractal;
 	if (fractal == 0)
 	{

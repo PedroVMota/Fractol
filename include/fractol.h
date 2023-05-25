@@ -20,8 +20,8 @@
 # define SCROLL_UP 4
 # define SCROLL_DOWN 5
 
-# define WIDTH 1000
-# define HEIGHT 1000
+# define WIDTH 500
+# define HEIGHT 500
 
 typedef struct s_img
 {
@@ -70,6 +70,7 @@ typedef struct s_win
 	int				mouse_y;
 	int				image_x;
 	int				image_y;
+	int	interactions;
 	double			offset_x;
 	double			offset_y;
 	double			zoom;
@@ -79,11 +80,6 @@ typedef struct s_win
 # define HERE printf("Here\n");
 t_win				*screen(void);
 t_img				*new_img(int w, int h, t_win *window);
-int					ft_fractal_mandelbrot(t_win *screen, int interaction_max,
-						int pixel_x, int pixel_y);
-int					ft_fractal_julia(t_win *screen, int interaction_max,
-						int pixel_x, int pixel_y);
-
 void				color_palette(t_win *main, int inte, int x, int y);
 void				screen_update_canvas(t_win *screen, int max);
 void				create_window(t_win *main, char *name);
@@ -100,8 +96,10 @@ double				map(float x, float input_min, float input_max,
 
 //Formulas
 int					initialize_data(t_win *screen, int fractal);
-void				mandelbro_calculation(t_win *screen, int max);
-void				julia_calculation(t_win *screen, int max);
+int	ft_fractal_mandelbrot(t_win *screen, int pixel_x, int pixel_y);
+int	ft_fractal_julia(t_win *screen, int pixel_x, int pixel_y);
+void	mandelbro_calculation(t_win *screen);
+void	julia_calculation(t_win *screen);
 
 //DEBUG ONLY
 void				print_data(t_win *screen);

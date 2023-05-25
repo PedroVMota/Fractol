@@ -14,13 +14,10 @@
 
 int	ft_render_frame(t_win *main, int option)
 {
-	int	inte;
-
-	inte = 0;
 	if (option == 0)
-		mandelbro_calculation(main, 300);
+		mandelbro_calculation(main);
 	if (option == 1)
-		julia_calculation(main, 300);
+		julia_calculation(main);
 	mlx_key_hook(main->win_ptr, key_hook, main);
 	mlx_mouse_hook(main->win_ptr, mouse_hook, main);
 	update_image_display(main);
@@ -60,5 +57,5 @@ int	main(int ac, char **av)
 		else
 			status = print_help_screen();
 	}
-	return (0);
+	return (status);
 }
