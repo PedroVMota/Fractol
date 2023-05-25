@@ -66,6 +66,11 @@ typedef struct s_win
 	void			*win_ptr;
 	int				width;
 	int				height;
+	int				mouse_x;
+	int				mouse_y;
+	int				image_x;
+	int				image_y;
+	int option;
 }					t_win;
 
 # define HERE printf("Here\n");
@@ -91,7 +96,7 @@ double				map(float x, float input_min, float input_max,
 						float output_min, float output_max);
 
 //Formulas
-void				initialize_data(t_win *screen, int fractal);
+int					initialize_data(t_win *screen, int fractal);
 void				mandelbro_calculation(t_win *screen, int max);
 void				julia_calculation(t_win *screen, int max);
 

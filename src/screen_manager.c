@@ -6,7 +6,7 @@
 /*   By: pvital-m <pvital-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/20 16:25:51 by pvital-m          #+#    #+#             */
-/*   Updated: 2023/05/24 21:31:19 by pvital-m         ###   ########.fr       */
+/*   Updated: 2023/05/25 11:02:47 by pvital-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 void	update_image_display(t_win *main)
 {
 	mlx_put_image_to_window(main->mlx_ptr, main->win_ptr, main->canva->img_ptr,
-			0, 0);
+			main->image_x, main->image_y);
 }
 
 void	place_pixel(t_win *main, int x, int y, int color)
