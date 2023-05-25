@@ -3,23 +3,45 @@
 /*                                                        :::      ::::::::   */
 /*   init.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: pvital-m <pvital@student.42lisbon.com>     +#+  +:+       +#+        */
+/*   By: pvital-m <pvital-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/22 20:20:30 by pvital-m          #+#    #+#             */
-/*   Updated: 2023/05/24 23:32:17 by pvital-m         ###   ########.fr       */
+/*   Updated: 2023/05/25 09:07:45 by pvital-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fractol.h"
 
-void	initialize_data(t_win *screen, char *n)
+void	initialize_data(t_win *screen, int fractal)
 {
-	screen->interactions = ft_atoi(n);
 	screen->height = HEIGHT;
 	screen->width = WIDTH;
 	screen->mlx_ptr = NULL;
 	screen->win_ptr = NULL;
-	
+	if (fractal == 0)
+	{
+		screen->mandelbrot = malloc(sizeof(t_mandelbrot));
+		if (!screen->mandelbrot)
+			return ;
+		screen->mandelbrot->ratio_x = 0;
+		screen->mandelbrot->ratio_y = 0;
+		screen->mandelbrot->real_part = 0;
+		screen->mandelbrot->imaginary_part = 0;
+		screen->mandelbrot->constant_b = 0;
+		screen->mandelbrot->constant_b = 0;
+	}
+	else if (fractal == 1)
+	{
+		screen->julia = malloc(sizeof(t_julia));
+		if (!screen->julia)
+			return ;
+		screen->julia->ratio_x = 0;
+		screen->julia->ratio_y = 0;
+		screen->julia->real_part = 0;
+		screen->julia->imaginary_part = 0;
+		screen->julia->constant_a = -0.8;
+		screen->julia->constant_b = 0.156;
+	}
 }
 
 void	print_data(t_win *screen)

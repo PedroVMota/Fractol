@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parsing.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: pvital-m <pvital@student.42lisbon.com>     +#+  +:+       +#+        */
+/*   By: pvital-m <pvital-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/20 08:51:07 by pvital-m          #+#    #+#             */
-/*   Updated: 2023/05/24 23:34:36 by pvital-m         ###   ########.fr       */
+/*   Updated: 2023/05/20 16:33:19 by pvital-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,17 +21,10 @@ bool	ft_check_paramters(char *arg)
 	return (false);
 }
 
-bool	interaction_validation(char *n)
-{
-	if (*n == '0' || !n || !*n)
-		return true;
-	return false;
-}
-
 int	print_help_screen(void)
 {
 	ft_printf("=========== HELP SCREEN ===========\n");
-	ft_printf("Usage: ./fractol [ fractal ] [ Nº of interaction ]\n");
+	ft_printf("Usage: ./fractol [fractal]\n");
 	ft_printf("[m] >>> Mandelbrot\n");
 	ft_printf("[j] >>> Julia\n");
 	ft_printf("=========== HELP SCREEN ===========\n");
