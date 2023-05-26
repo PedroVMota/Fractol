@@ -6,7 +6,7 @@
 /*   By: pvital-m <pvital-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/20 11:11:00 by pvital-m          #+#    #+#             */
-/*   Updated: 2023/05/25 15:43:50 by pvital-m         ###   ########.fr       */
+/*   Updated: 2023/05/26 15:50:24 by pvital-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,61 +65,43 @@ void	julia_calculation(t_win *screen)
 	}
 }
 
-void	move_right(t_win *screen)
-{
-	ft_bzero(screen->canva->addr, sizeof(char));
-	if (screen->image_x + 250 > 1000)
-		return ;
-	(screen->image_x += 250);
-	if (screen->option == 0)
-		mandelbro_calculation(screen);
-	if (screen->option == 1)
-		julia_calculation(screen);
-	// update_image_display(screen);
-}
-void	move_left(t_win *screen)
-{
-	ft_bzero(screen->canva->addr, sizeof(char));
-	if (screen->image_x - 250 < -1000)
-		return ;
-	(screen->image_x -= 250);
-	if (screen->option == 0)
-		mandelbro_calculation(screen);
-	if (screen->option == 1)
-		julia_calculation(screen);
-	// update_image_display(screen);
-}
-
 int	key_hook(int keycode, t_win *window)
 {
 	if (keycode == ESC || keycode == 65307)
 		close_program(window);
-	if (keycode == 65363)
-		move_right(window);
-	if (keycode == 65361)
-		move_left(window);
+	if (keycode == 109)
+		window->interactions += 10;
+	if (keycode == 110)
+		window->interactions -= 10;
+	if (window->option == 1)
+	{
+		if (keycode == 65362)
+			window->julia->constant_b += 0.01;
+		if (keycode == 65364)
+			window->julia->constant_b -= 0.01;
+		if (keycode == 65361)
+			window->julia->constant_a += 0.01;
+		if (keycode == 65363)
+			window->julia->constant_a -= 0.01;
+		julia_calculation(window);
+		update_image_display(window);
+	}
 	return (0);
 }
-int	mouse_hook(int button, int x, int y, t_win *window)
 
+int	mouse_hook(int button, int x, int y, t_win *window)
 {
+	
 	if (button == 4)
-	{
 		window->zoom *= 1.1;
-		window->mouse_x = x;
-		window->mouse_y = y;
-	}
 	if (button == 5)
-	{
 		window->zoom /= 1.1;
-		window->mouse_x = x;
-		window->mouse_y = y;
-	}
 	if (window->option == 0)
 		mandelbro_calculation(window);
 	if (window->option == 1)
 		julia_calculation(window);
-	print_data(window);
+	(void)x;
+	(void)y;
 	update_image_display(window);
 	return (0);
 }

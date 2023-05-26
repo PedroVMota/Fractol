@@ -6,11 +6,11 @@
 #    By: pvital-m <pvital-m@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/03/05 14:49:36 by pvital-m          #+#    #+#              #
-#    Updated: 2023/05/24 20:35:27 by pvital-m         ###   ########.fr        #
+#    Updated: 2023/05/26 10:02:10 by pvital-m         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-CC		= @cc
+CC		= cc
 CFLAGS	= -Wall -Wextra -Werror
 LIB1	= @ar -rcs
 LIB2	= @ranlib
