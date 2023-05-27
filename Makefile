@@ -1,6 +1,6 @@
 # CC			= 	cc -fsanitize=leak -g
 CC			= 	cc -g
-CFLAGS		= 	-Wall -Wextra -Werror  #-fsanitize=address
+CFLAGS		= 	-Wall -Wextra -Werror -O3  #-fsanitize=address
 RM			= 	/bin/rm -f
 NAME		= 	fractol
 INCLUDES	= 	-I include/
@@ -16,11 +16,11 @@ COLOUR_YELLOW=\033[7;1;33m
 ifeq ($(UNAME), Darwin)
 	MLX_LIB_DIR = minilbx_opengl/
 	MLX_INCLUDE = -Iminilbx_opengl
-	MLX_FLAGS = -L$(MLX_LIB_DIR) -lmlx -framework OpenGL -framework AppKit
+	MLX_FLAGS = -L$(MLX_LIB_DIR) -lmlx -framework OpenGL -framework AppKit -O3
 else
 	MLX_LIB_DIR = mlx_linux/
 	MLX_INCLUDE = -Imlx_linux
-	MLX_FLAGS = -L$(MLX_LIB_DIR) -lmlx_Linux -L/usr/lib -lXext -lX11 -lm -lz
+	MLX_FLAGS = -L$(MLX_LIB_DIR) -lmlx_Linux -L/usr/lib -lXext -lX11 -lm -lz -O3
 endif
 
 all: $(NAME) 

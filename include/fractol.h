@@ -6,7 +6,7 @@
 /*   By: pvital-m <pvital-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/26 10:44:57 by pvital-m          #+#    #+#             */
-/*   Updated: 2023/05/26 11:38:35 by pvital-m         ###   ########.fr       */
+/*   Updated: 2023/05/27 19:01:35 by pvital-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,33 +49,13 @@ typedef struct s_img
 	int				y;
 }					t_img;
 
-typedef struct s_mandelbrot
-{
-	double			ratio_x;
-	double			ratio_y;
-	double			real_part;
-	double			imaginary_part;
-	double			constant_a;
-	double			constant_b;
-}					t_mandelbrot;
-
-typedef struct s_julia
-{
-	double			ratio_x;
-	double			ratio_y;
-	double			real_part;
-	double			imaginary_part;
-	double			constant_a;
-	double			constant_b;
-}					t_julia;
-
 typedef struct s_win
 {
 	t_img			*canva;
-	t_julia			*julia;
-	t_mandelbrot	*mandelbrot;
 	void			*mlx_ptr;
 	void			*win_ptr;
+	float			ratio_x;
+	float			ratio_y;
 	int				width;
 	int				height;
 	int				mouse_x;
@@ -87,6 +67,10 @@ typedef struct s_win
 	int				image_x;
 	double			zoom;
 	int				option;
+	double			real_part;
+	double			imaginary_part;
+	double			constant_a;
+	double			constant_b;
 }					t_win;
 
 t_win				*screen(void);
@@ -114,4 +98,9 @@ void				julia_calculation(t_win *screen);
 
 //DEBUG ONLY
 void				print_data(t_win *screen);
+
+void				close_program(t_win *screen);
+
+void				zoom_in(t_win *window, int new_mouse_x, int new_mouse_y);
+void				zoom_out(t_win *window, int new_mouse_x, int new_mouse_y);
 #endif
