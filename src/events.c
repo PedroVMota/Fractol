@@ -6,7 +6,7 @@
 /*   By: pvital-m <pvital-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/20 11:11:00 by pvital-m          #+#    #+#             */
-/*   Updated: 2023/05/27 19:03:55 by pvital-m         ###   ########.fr       */
+/*   Updated: 2023/05/29 10:35:58 by pvital-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,14 +14,16 @@
 
 int	key_hook(int keycode, t_win *window)
 {
+	printf("keycode: %d\n", keycode);
 	if (keycode == ESC || keycode == 65307)
 		close_program(window);
-	if (keycode == 109)
+	if (keycode == 65451)
 		window->interactions += 10;
-	if (keycode == 110)
+	if (keycode == 65455)
 		window->interactions -= 10;
 	if (window->option == 1)
 	{
+		mlx_clear_window(window->mlx_ptr, window->win_ptr);
 		if (keycode == 65362)
 			window->constant_b += 0.01;
 		if (keycode == 65364)
@@ -45,7 +47,9 @@ int	mouse_hook(int button, int x, int y, t_win *window)
 	if (window->option == 0)
 		mandelbro_calculation(window);
 	if (window->option == 1)
+	{
 		julia_calculation(window);
+	}
 	(void)x;
 	(void)y;
 	update_image_display(window);

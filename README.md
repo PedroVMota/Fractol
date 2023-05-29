@@ -78,8 +78,8 @@ To explore the Julia fractal using the Fractol program:
 
 In addition to the mouse interactions described above, you can use the following keyboard controls while exploring the fractals:
 
-- **Arrow keys**: Move the fractal in different directions.
-- **Spacebar**: Reset the fractal to its initial position and zoom level.
+- **Arrow keys**: Move the fractal in different directions. Only works for Julia.
+- **Spacebar**: Change the pallete scheme.
 - **Scroll wheel**: Zoom in/out on the fractal.
 - **Numpad +/-**: Increase or decrease the maximum number of iterations used to calculate the fractal. Higher values provide more detail but require more computation.
 - **Esc**: Exit the Fractol program.
