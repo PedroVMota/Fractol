@@ -6,7 +6,7 @@
 /*   By: pvital-m <pvital-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/26 10:44:57 by pvital-m          #+#    #+#             */
-/*   Updated: 2023/05/29 11:47:49 by pvital-m         ###   ########.fr       */
+/*   Updated: 2023/05/29 12:52:56 by pvital-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,6 +57,8 @@ typedef struct s_win
 	t_img			*canva;
 	void			*mlx_ptr;
 	void			*win_ptr;
+	int				pos_x;
+	int				pos_y;
 	int				color_mode;
 	float			ratio_x;
 	float			ratio_y;
@@ -69,7 +71,7 @@ typedef struct s_win
 	double			constant_b;
 }					t_win;
 
-void	default_pallete(t_win *main, int inte, int x, int y);
+void				default_pallete(t_win *main, int inte, int x, int y);
 void				zebra_pallete(t_win *main, int inte, int x, int y);
 t_win				*screen(void);
 t_img				*new_img(int w, int h, t_win *window);
@@ -87,7 +89,7 @@ bool				ft_check_paramters(char *arg);
 double				map(float x, float input_min, float input_max);
 
 //Formulas
-int	initialize_data(t_win *screen, int fractal);
+int					initialize_data(t_win *screen, int fractal);
 int					ft_fractal_mandelbrot(t_win *screen, int pixel_x,
 						int pixel_y);
 int					ft_fractal_julia(t_win *screen, int pixel_x, int pixel_y);

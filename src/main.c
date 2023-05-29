@@ -6,7 +6,7 @@
 /*   By: pvital-m <pvital-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/20 16:33:23 by pvital-m          #+#    #+#             */
-/*   Updated: 2023/05/29 11:27:59 by pvital-m         ###   ########.fr       */
+/*   Updated: 2023/05/29 12:09:29 by pvital-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ int	ft_render_frame(t_win *main)
 {
 	fracta_builder(main);
 	mlx_hook(main->win_ptr, 2L, 1L << 0, key_hook, main);
-	// mlx_mouse_hook(main->win_ptr, mouse_hook, main);
+	mlx_mouse_hook(main->win_ptr, mouse_hook, main);
 	update_image_display(main);
 	mlx_loop(main->mlx_ptr);
 	return (0);

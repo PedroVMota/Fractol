@@ -6,7 +6,7 @@
 /*   By: pvital-m <pvital-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/26 10:46:44 by pvital-m          #+#    #+#             */
-/*   Updated: 2023/05/29 11:50:24 by pvital-m         ###   ########.fr       */
+/*   Updated: 2023/05/29 12:56:22 by pvital-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@ int	ft_fractal_julia(t_win *screen, int pixel_x, int pixel_y)
 	int	interactions;
 
 	interactions = 0;
-	screen->ratio_x = map(pixel_x, 0, WIDTH);
+	screen->ratio_x = map(pixel_x, 0, WIDTH );
 	screen->ratio_y = map(pixel_y, 0, HEIGHT);
 	while (interactions < screen->interactions)
 	{

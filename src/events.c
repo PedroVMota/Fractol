@@ -6,7 +6,7 @@
 /*   By: pvital-m <pvital-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/20 11:11:00 by pvital-m          #+#    #+#             */
-/*   Updated: 2023/05/29 11:47:34 by pvital-m         ###   ########.fr       */
+/*   Updated: 2023/05/29 12:52:58 by pvital-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,5 +48,37 @@ int	key_hook(int keycode, t_win *window)
 		fracta_builder(window);
 		update_image_display(window);
 	}
+	return (0);
+}
+
+int	mouse_hook(int button, int x, int y, t_win *window)
+{
+	printf("button: %d\n", button);
+	printf("x: %d\n", x);
+	printf("y: %d\n", y);
+	if (button == 1)
+	{
+		window->constant_a = (double)x / WIDTH * 2 - 1;
+		window->constant_b = (double)y / HEIGHT * 2 - 1;
+		fracta_builder(window);
+		update_image_display(window);
+	}
+	if (button == 5)
+	{
+		window->zoom *= 1.05;
+		window->pos_x = x;
+		window->pos_y = y;
+		fracta_builder(window);
+		update_image_display(window);
+	}
+	if (button == 4)
+	{
+		window->zoom /= 1.05;
+		window->pos_x = x;
+		window->pos_y = y;
+		fracta_builder(window);
+		update_image_display(window);
+	}
+
 	return (0);
 }

@@ -6,7 +6,7 @@
 /*   By: pvital-m <pvital-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/20 09:05:26 by pvital-m          #+#    #+#             */
-/*   Updated: 2023/05/29 11:46:49 by pvital-m         ###   ########.fr       */
+/*   Updated: 2023/05/29 13:21:14 by pvital-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,43 +81,15 @@ int	interpolate_color(double t, int color1, int color2)
 
 void	default_pallete(t_win *main, int inte, int x, int y)
 {
-	printf("Default Being Called\n");
-	int		num_colors;
-	int		index1;
-	int		index2;
-	double	t;
-	int		color1;
-	int		color2;
-	int		color;
-
-	// Define the colors
-	int colors[] = {
-		0x42300F, // brown 3
-		0x19071A, // dark violet
-		0x09012F, // darkest blue
-		0x040449, // blue 5
-		0x000764, // blue 4
-		0x0C2C8A, // blue 3
-		0x1852B1, // blue 2
-		0x397DD1, // blue 1
-		0x86B5E5, // blue 0
-		0xD3ECF8, // lightest blue
-		0xF1E9BF, // lightest yellow
-		0xF8C95F, // light yellow
-		0xFFAA00, // dirty yellow
-		0xCC8000, // brown 0
-		0x995700, // brown 1
-		0x6A3403  // brown 2
-	};
-	num_colors = sizeof(colors) / sizeof(colors[0]);
-	index1 = inte / (main->interactions / (num_colors - 1));
-	index2 = index1 + 1;
-	if (index2 >= num_colors)
-		index2 = num_colors - 1;
-	t = (double)(inte % (main->interactions / (num_colors - 1)))
-		/ (main->interactions / (num_colors - 1));
-	color1 = colors[index1];
-	color2 = colors[index2];
-	color = interpolate_color(t, color1, color2);
-	place_pixel(main, x, y, color);
+	if (inte == 0)
+		place_pixel(main, x, y, 0x000000);
+	else if (inte > main->interactions * 2 / 3)
+		place_pixel(main, x, y, interpolate_color(map_color(inte, 0,
+						main->interactions), 0x000000, 0xFF0000)); // Red
+	else if (inte > main->interactions / 3)
+		place_pixel(main, x, y, interpolate_color(map_color(inte, 0,
+						main->interactions), 0xFFA500, 0xFF0000)); // Orange
+	else
+		place_pixel(main, x, y, interpolate_color(map_color(inte, 0,
+						main->interactions / 3), 0x000000, 0x0000FF)); // Blue
 }
