@@ -6,16 +6,14 @@
 /*   By: pvital-m <pvital-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/20 16:25:51 by pvital-m          #+#    #+#             */
-/*   Updated: 2023/05/27 19:04:03 by pvital-m         ###   ########.fr       */
+/*   Updated: 2023/05/29 11:10:14 by pvital-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fractol.h"
 
-void	update_image_display(t_win *main)
-{
-	mlx_put_image_to_window(main->mlx_ptr, main->win_ptr, main->canva->img_ptr,
-		main->image_x, main->image_y);
+void	update_image_display(t_win *main){
+	mlx_put_image_to_window(main->mlx_ptr, main->win_ptr, main->canva->img_ptr,0, 0);
 }
 
 void	place_pixel(t_win *main, int x, int y, int color)
@@ -51,6 +49,5 @@ t_img	*new_img(int w, int h, t_win *window)
 void	create_window(t_win *main, char *name)
 {
 	main->mlx_ptr = mlx_init();
-	main->win_ptr = mlx_new_window(main->mlx_ptr, main->width, main->height,
-			name);
+	main->win_ptr = mlx_new_window(main->mlx_ptr, WIDTH, HEIGHT, name);
 }

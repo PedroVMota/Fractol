@@ -6,7 +6,7 @@
 /*   By: pvital-m <pvital-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/26 10:44:57 by pvital-m          #+#    #+#             */
-/*   Updated: 2023/05/27 19:01:35 by pvital-m         ###   ########.fr       */
+/*   Updated: 2023/05/29 11:47:49 by pvital-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,9 @@
 # define WIDTH 500
 # define HEIGHT 500
 
+# define BLACK_AND_WIRTE 1
+# define COLORFULL 0
+
 typedef struct s_img
 {
 	struct s_win	*win;
@@ -54,17 +57,10 @@ typedef struct s_win
 	t_img			*canva;
 	void			*mlx_ptr;
 	void			*win_ptr;
+	int				color_mode;
 	float			ratio_x;
 	float			ratio_y;
-	int				width;
-	int				height;
-	int				mouse_x;
-	int				mouse_y;
 	int				interactions;
-	double			offset_x;
-	double			offset_y;
-	int				image_y;
-	int				image_x;
 	double			zoom;
 	int				option;
 	double			real_part;
@@ -73,6 +69,8 @@ typedef struct s_win
 	double			constant_b;
 }					t_win;
 
+void	default_pallete(t_win *main, int inte, int x, int y);
+void				zebra_pallete(t_win *main, int inte, int x, int y);
 t_win				*screen(void);
 t_img				*new_img(int w, int h, t_win *window);
 void				color_palette(t_win *main, int inte, int x, int y);
@@ -89,18 +87,13 @@ bool				ft_check_paramters(char *arg);
 double				map(float x, float input_min, float input_max);
 
 //Formulas
-int					initialize_data(t_win *screen, int fractal);
+int	initialize_data(t_win *screen, int fractal);
 int					ft_fractal_mandelbrot(t_win *screen, int pixel_x,
 						int pixel_y);
 int					ft_fractal_julia(t_win *screen, int pixel_x, int pixel_y);
-void				mandelbro_calculation(t_win *screen);
-void				julia_calculation(t_win *screen);
-
+void				fracta_builder(t_win *screen);
 //DEBUG ONLY
 void				print_data(t_win *screen);
 
 void				close_program(t_win *screen);
-
-void				zoom_in(t_win *window, int new_mouse_x, int new_mouse_y);
-void				zoom_out(t_win *window, int new_mouse_x, int new_mouse_y);
 #endif

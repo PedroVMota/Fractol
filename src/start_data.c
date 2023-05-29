@@ -6,7 +6,7 @@
 /*   By: pvital-m <pvital-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/22 20:20:30 by pvital-m          #+#    #+#             */
-/*   Updated: 2023/05/29 09:48:35 by pvital-m         ###   ########.fr       */
+/*   Updated: 2023/05/29 11:30:00 by pvital-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,14 +14,8 @@
 
 int	initialize_data(t_win *screen, int fractal)
 {
-	screen->height = HEIGHT;
-	screen->width = WIDTH;
 	screen->mlx_ptr = NULL;
 	screen->win_ptr = NULL;
-	screen->image_x = 0;
-	screen->image_y = 0;
-	screen->offset_x = 1;
-	screen->offset_y = 1;
 	screen->interactions = 300;
 	screen->zoom = 1;
 	screen->option = fractal;
@@ -31,6 +25,7 @@ int	initialize_data(t_win *screen, int fractal)
 	screen->imaginary_part = 0;
 	screen->constant_b = 0;
 	screen->constant_b = 0;
+	screen->color_mode = BLACK_AND_WIRTE;
 	if (fractal == 1)
 	{
 		screen->constant_a = -0.8;

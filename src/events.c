@@ -6,11 +6,23 @@
 /*   By: pvital-m <pvital-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/20 11:11:00 by pvital-m          #+#    #+#             */
-/*   Updated: 2023/05/29 10:35:58 by pvital-m         ###   ########.fr       */
+/*   Updated: 2023/05/29 11:47:34 by pvital-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fractol.h"
+
+void	change_pallete(t_win *screen)
+{
+	printf("Change Pallete Function Called\nPallete Mod %i\n",
+			screen->color_mode);
+	if (screen->color_mode + 1 < 2)
+		screen->color_mode += 1;
+	else
+		screen->color_mode = 0;
+	fracta_builder(screen);
+	update_image_display(screen);
+}
 
 int	key_hook(int keycode, t_win *window)
 {
@@ -21,9 +33,10 @@ int	key_hook(int keycode, t_win *window)
 		window->interactions += 10;
 	if (keycode == 65455)
 		window->interactions -= 10;
+	if (keycode == 49)
+		change_pallete(window);
 	if (window->option == 1)
 	{
-		mlx_clear_window(window->mlx_ptr, window->win_ptr);
 		if (keycode == 65362)
 			window->constant_b += 0.01;
 		if (keycode == 65364)
@@ -32,26 +45,8 @@ int	key_hook(int keycode, t_win *window)
 			window->constant_a += 0.01;
 		if (keycode == 65363)
 			window->constant_a -= 0.01;
-		julia_calculation(window);
+		fracta_builder(window);
 		update_image_display(window);
 	}
-	return (0);
-}
-
-int	mouse_hook(int button, int x, int y, t_win *window)
-{
-	if (button == 4)
-		zoom_in(window, x, y);
-	if (button == 5)
-		zoom_out(window, x, y);
-	if (window->option == 0)
-		mandelbro_calculation(window);
-	if (window->option == 1)
-	{
-		julia_calculation(window);
-	}
-	(void)x;
-	(void)y;
-	update_image_display(window);
 	return (0);
 }
