@@ -6,6 +6,10 @@ Fractol is a program that allows you to explore and visualize fractals. Fractals
 
 This documentation will guide you through the usage of the Fractol program, explaining how to run it and explore the available fractals. Currently, the program supports two types of fractals: Julia and Mandelbrot.
 
+
+## Support
++ [m] >>> Mandelbrot
++ [j] >>> Julia
 ## Installation
 
 To run the Fractol program, please follow the steps below:
@@ -65,7 +69,7 @@ To explore the Julia fractal using the Fractol program:
 1. Run the Fractol program with the command:
 
 ```
-./fractol julia
+./fractol j
 ```
 
 2. Move your mouse to change the position of the Julia set. Each location in the window represents a different constant for the Julia fractal. The fractal will update in real-time as you move the mouse.
