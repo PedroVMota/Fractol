@@ -6,7 +6,7 @@
 /*   By: pvital-m <pvital-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/26 10:44:57 by pvital-m          #+#    #+#             */
-/*   Updated: 2023/05/29 12:52:56 by pvital-m         ###   ########.fr       */
+/*   Updated: 2023/05/31 21:13:18 by pvital-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,17 +24,18 @@
 # include <stdio.h>
 # include <stdlib.h>
 
-# define ESC 53
-# define UP 126
-# define DOWN 125
-# define LEFT 123
-# define RIGHT 124
+# define ESC 53 
+# define UP 126 
+# define DOWN 125  
+# define LEFT 123 
+# define RIGHT 124 
 # define SCROLL_UP 4
 # define SCROLL_DOWN 5
-
+# define SPACE 49
+# define PLUS 24
+# define MINUS 44
 # define WIDTH 500
 # define HEIGHT 500
-
 # define BLACK_AND_WIRTE 1
 # define COLORFULL 0
 
@@ -69,7 +70,16 @@ typedef struct s_win
 	double			imaginary_part;
 	double			constant_a;
 	double			constant_b;
+	int				mouse_x;
+	int				mouse_y;
 }					t_win;
+
+// _________________________
+// |                       |
+// |   PARSING FUNCTIONS   |
+// |_______________________|
+
+int					validate_arguments(char **argv);
 
 void				default_pallete(t_win *main, int inte, int x, int y);
 void				zebra_pallete(t_win *main, int inte, int x, int y);
@@ -80,22 +90,35 @@ void				screen_update_canvas(t_win *screen, int max);
 void				create_window(t_win *main, char *name);
 void				update_image_display(t_win *main);
 void				place_pixel(t_win *main, int x, int y, int color);
-int					key_hook(int keycode, t_win *window);
-int					mouse_hook(int button, int x, int y, t_win *window);
 int					gen_trgb(int opacity, int red, int green, int blue);
 void				color_palette(t_win *main, int inte, int x, int y);
 int					print_help_screen(void);
-bool				ft_check_paramters(char *arg);
 double				map(float x, float input_min, float input_max);
 
 //Formulas
-int					initialize_data(t_win *screen, int fractal);
+int					initialize_data(t_win *screen);
+
 int					ft_fractal_mandelbrot(t_win *screen, int pixel_x,
 						int pixel_y);
 int					ft_fractal_julia(t_win *screen, int pixel_x, int pixel_y);
 void				fracta_builder(t_win *screen);
-//DEBUG ONLY
-void				print_data(t_win *screen);
 
+// _________________________
+// |                       |
+// |   EVENT FUNCTIONS     |
+// |_______________________|
+void				interactions_events(int keycode, t_win *window);
+int					key_hook(int keycode, t_win *window);
+int					mouse_hook(int button, int x, int y, t_win *window);
+// _________________________
+// |                       |
+// |   FEATURES FUNCTIONS  |
+// |_______________________|
+void				zoom_in(int x, int y);
+void				zoom_out(int x, int y);
+void				zoom_reset(void);
 void				close_program(t_win *screen);
+void				change_pallete(t_win *screen);
+float				float_atoi(char *str);
+
 #endif

@@ -6,12 +6,12 @@
 #    By: pvital-m <pvital-m@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/03/05 14:49:36 by pvital-m          #+#    #+#              #
-#    Updated: 2023/05/29 11:01:50 by pvital-m         ###   ########.fr        #
+#    Updated: 2023/05/31 19:15:55 by pvital-m         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-CC		= cc -g
-CFLAGS	= -Wall -Wextra -Werror
+CC		= cc -g -O3
+CFLAGS	= -Wall -Wextra -Werror 
 LIB1	= @ar -rcs
 LIB2	= @ranlib
 RM		= @/bin/rm -f
@@ -52,7 +52,7 @@ bonus:		$(NAME) $(BONUS_O)
 			$(LIB2) $(NAME)
 
 %.o : %.c
-			$(CC) $(INCLUDE) -c $< -o $(<:.c=.o)
+			$(CC) $(CFLAGS) $(INCLUDE) -c $< -o $(<:.c=.o)
 
 clean:
 			$(RM) $(OBJS) $(BONUS_O)

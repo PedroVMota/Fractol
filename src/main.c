@@ -6,7 +6,7 @@
 /*   By: pvital-m <pvital-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/20 16:33:23 by pvital-m          #+#    #+#             */
-/*   Updated: 2023/05/29 12:09:29 by pvital-m         ###   ########.fr       */
+/*   Updated: 2023/05/31 21:14:06 by pvital-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,37 +22,24 @@ int	ft_render_frame(t_win *main)
 	return (0);
 }
 
-int	window_init(int options)
+int	window_init()
 {
-	initialize_data(screen(), options);
+	initialize_data(screen());
 	create_window(screen(), "fract-ol");
 	if (!screen()->win_ptr)
 		return (2);
-	(screen())->canva = new_img(WIDTH, HEIGHT, screen());
+	screen()->canva = new_img(WIDTH, HEIGHT, screen());
+	if(!screen()->canva)
+		return (2);
 	ft_render_frame(screen());
 	return (0);
 }
 
 int	main(int ac, char **av)
 {
-	int	status;
-
-	status = 0;
 	if (ac == 1)
-		status = print_help_screen();
-	if (ac == 2)
-	{
-		if (ft_check_paramters(av[1]))
-		{
-			if (av[1][0] == 'm')
-				status = window_init(0);
-			else if (av[1][0] == 'j')
-				status = window_init(1);
-			else
-				status = print_help_screen();
-		}
-		else
-			status = print_help_screen();
-	}
-	return (status);
+		print_help_screen();
+	validate_arguments(&av[1]);
+	if (window_init() == 2)
+		return (2);
 }
