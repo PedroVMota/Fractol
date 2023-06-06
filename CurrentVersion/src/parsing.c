@@ -6,7 +6,7 @@
 /*   By: pvital-m <pvital-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/20 08:51:07 by pvital-m          #+#    #+#             */
-/*   Updated: 2023/06/06 00:33:58 by pvital-m         ###   ########.fr       */
+/*   Updated: 2023/06/06 12:56:53 by pvital-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,14 +36,14 @@ void config_all(char **av)
 {
 	set_type_of_fractol(av[1]);
 	initialize_data(screen());
-	if(screen()->set != JULIA)
+	if(screen()->set == MANDELBROT)
 	{
-		screen()->constant_real = 0;
-		screen()->constant_imaginary = 0;
+		screen()->cr = 0;
+		screen()->ci = 0;
 		return ;
 	}
-	screen()->constant_real = -0.8;
-	screen()->constant_imaginary = 0.156;
+	screen()->cr = -0.8;
+	screen()->ci = 0.156;
 }
 
 void	print_help_screen(void)

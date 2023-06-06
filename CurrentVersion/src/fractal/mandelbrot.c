@@ -6,30 +6,30 @@
 /*   By: pvital-m <pvital-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/27 17:33:24 by pvital-m          #+#    #+#             */
-/*   Updated: 2023/06/06 00:08:04 by pvital-m         ###   ########.fr       */
+/*   Updated: 2023/06/06 15:44:39 by pvital-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fractol.h"
 
-
-int	mandelbrot(int cr, int ci)
+int	mandelbrot(float cr, float ci, t_win *screen)
 {
-	int	zr;
-	int	zi;
-	int	i;
-	int	tmp;
+	float zr;
+	float zi;
+	int i;
+	float tmp;
 
 	zr = 0;
 	zi = 0;
 	i = 0;
+	(void)screen;
 	while (i < MAX_INTERACTIONS)
 	{
-		if (zr * zr + zi * zi > 4)
+		if ((zr * zr + zi * zi) > 4.0)
 			break ;
-		tmp = zr * zr - zi * zi + cr;
-		zi = 2 * zr * zi + ci;
-		zr = tmp;
+		tmp = 2 * zr * zi + ci;
+		zr = zr * zr - zi * zi + cr;
+		zi = tmp;
 		i++;
 	}
 	return (i);

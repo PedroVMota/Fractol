@@ -10,8 +10,8 @@ int julia(t_win *screen, double zr, double zi)
 	{
 		if ((zi * zi + zr * zr) > 4.0)
 			break ;
-		tmp = 2 * zr * zi + screen->constant_real;
-		zr = zr * zr - zi * zi + screen->constant_imaginary;
+		tmp = 2 * zr * zi + screen->cr;
+		zr = zr * zr - zi * zi + screen->ci;
 		zi = tmp;
 		n++;
 	}

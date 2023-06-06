@@ -6,7 +6,7 @@
 /*   By: pvital-m <pvital-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/20 11:11:00 by pvital-m          #+#    #+#             */
-/*   Updated: 2023/06/06 00:23:53 by pvital-m         ###   ########.fr       */
+/*   Updated: 2023/06/06 12:56:53 by pvital-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,13 +19,13 @@ int	key_hook(int keycode, t_win *window)
 	if (window->set == JULIA)
 	{
 		if (keycode == 65362)
-			window->constant_imaginary += 0.01;
+			window->ci += 0.01;
 		if (keycode == 65364)
-			window->constant_imaginary -= 0.01;
+			window->ci -= 0.01;
 		if (keycode == 65361)
-			window->constant_real += 0.01;
+			window->cr += 0.01;
 		if (keycode == 65363)
-			window->constant_real -= 0.01;
+			window->cr -= 0.01;
 	}
 	return (0);
 }
