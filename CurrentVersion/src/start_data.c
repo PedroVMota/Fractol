@@ -6,7 +6,7 @@
 /*   By: pvital-m <pvital-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/22 20:20:30 by pvital-m          #+#    #+#             */
-/*   Updated: 2023/06/06 12:56:59 by pvital-m         ###   ########.fr       */
+/*   Updated: 2023/06/06 21:07:42 by pvital-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,16 +27,16 @@ void initialize_data(t_win *screen)
 	set_image(screen);
 	screen->mlx_ptr					= NULL;
 	screen->win_ptr 				= NULL;
-	screen->min_real 				= -4;
-	screen->max_real 				= 4;
-	screen->min_imaginary 			= -4;
-	screen->max_imaginary 			= 4;
+	screen->min_real 				= -2;
+	screen->max_real 				=2;
+	screen->min_imaginary 			= -2;
+	screen->max_imaginary 			= 2;
 	screen->cr 			= 0;
 	screen->ci 		= 0;
 	screen->real_x 					= 1;
 	screen->zoom 					= 1;
 	screen->fraction_x 				= 1;
-	screen->pallete 				= ZEBRA;
+	screen->pallete 				= RAINBOW;
 }
 
 t_win *screen(void)

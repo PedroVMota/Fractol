@@ -10,14 +10,19 @@ static float	get_percentage(int inte, int max)
 	return ((float)inte / (float)max * 100);
 }
 
-static int	pc(int percentage)
+static float	pc(int percentage)
 {
 	return (mc(percentage));
 }
 
 static int	rgb(int t, int r, int g, int b)
 {
-	return (t << 24 | r << 16 | g << 8 | b);
+	int color;
+
+	color = t << 24 | r << 16 | g << 8 | b;
+	if(color < 0)
+		color = -color;
+	return (color);
 }
 
 void	zebra_pallete(t_win *main, int inte, int x, int y)

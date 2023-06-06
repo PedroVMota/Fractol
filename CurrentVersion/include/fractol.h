@@ -6,7 +6,7 @@
 /*   By: pvital-m <pvital-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/26 10:44:57 by pvital-m          #+#    #+#             */
-/*   Updated: 2023/06/06 14:21:18 by pvital-m         ###   ########.fr       */
+/*   Updated: 2023/06/06 21:50:53 by pvital-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,31 +23,16 @@
 # include <stdbool.h>
 # include <stdio.h>
 # include <stdlib.h>
-
-# ifndef FRACTAL_TYPES_H
-#  define FRACTAL_TYPES_H
-#  define MANDELBROT 1
-#  define JULIA 2
-# endif
-
-# ifndef COLOR_PALETTES_H
-#  define COLOR_PALETTES_H
-#  define ZEBRA 1
-#  define RAINBOW 2
-# endif
-
-# define ESC 53
-# define UP 126
-# define DOWN 125
-# define LEFT 123
-# define RIGHT 124
-# define SCROLL_UP 4
-# define SCROLL_DOWN 5
-
+// Set
+# define MANDELBROT 1
+# define JULIA 2
+// Color
+# define ZEBRA 1
+# define RAINBOW 2
+// Resulution
 # define WIDTH 500
 # define HEIGHT 500
-
-# define MAX_INTERACTIONS 300
+# define MAX_INTERACTIONS 150
 
 typedef struct s_img
 {
@@ -78,10 +63,10 @@ typedef struct s_win
 	int		pallete;
 }			t_win;
 
-//parsing
+// parsing
 void		config_all(char **av);
 
-//MLX FUNCTIONS
+// MLX FUNCTIONS
 void		place_pixel(t_win *main, int x, int y, int color);
 void		update_image_display(t_win *main);
 t_win		*screen(void);
@@ -97,11 +82,12 @@ void		build(t_win *screen);
 int			julia(t_win *screen, double zr, double zi);
 int			mandelbrot(float cr, float ci, t_win *screen);
 
-//colors
+// colors
 void		create_graph(t_win *screen, int interactions, int x, int y);
 void		zebra_pallete(t_win *main, int inte, int x, int y);
+void		rainbow_pallete(t_win *screen, int interactions, int x, int y);
 
-//events
+// events
 int			key_hook(int keycode, t_win *window);
 int			mouse_hook(int button, int x, int y, t_win *window);
 
