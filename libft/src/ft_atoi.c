@@ -6,7 +6,7 @@
 /*   By: pvital-m <pvital-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/19 17:54:46 by pvital-m          #+#    #+#             */
-/*   Updated: 2023/05/24 17:18:06 by pvital-m         ###   ########.fr       */
+/*   Updated: 2023/06/09 21:11:55 by pvital-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 long	ft_atoi(const char *str)
 {
-	int	i;
+	int		i;
 	long	total;
 	long	sign;
 

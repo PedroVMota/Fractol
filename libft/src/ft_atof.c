@@ -6,7 +6,7 @@
 /*   By: pvital-m <pvital-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/09 13:51:08 by pvital-m          #+#    #+#             */
-/*   Updated: 2023/06/09 13:51:15 by pvital-m         ###   ########.fr       */
+/*   Updated: 2023/06/09 21:12:09 by pvital-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,10 +30,10 @@ static int	skip_space_sign(const char *str, int *is_neg)
 
 double	ft_atof(const char *str)
 {
-	int i;
-	double nb;
-	int is_neg;
-	double div;
+	int		i;
+	double	nb;
+	int		is_neg;
+	double	div;
 
 	nb = 0;
 	div = 0.1;

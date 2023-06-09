@@ -6,7 +6,7 @@
 /*   By: pvital-m <pvital-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/23 18:03:25 by pvital-m          #+#    #+#             */
-/*   Updated: 2023/06/09 13:53:14 by pvital-m         ###   ########.fr       */
+/*   Updated: 2023/06/09 21:11:48 by pvital-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,8 +15,8 @@
 void	*ft_memmove(void *dst, const void *src, size_t len)
 {
 	size_t	i;
-	char		*d_dst;
-	char		*s_src;
+	char	*d_dst;
+	char	*s_src;
 
 	i = 0;
 	d_dst = (char *)dst;

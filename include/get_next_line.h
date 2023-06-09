@@ -6,12 +6,12 @@
 /*   By: pvital-m <pvital-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/17 13:02:13 by pvital-m          #+#    #+#             */
-/*   Updated: 2023/05/20 08:45:53 by pvital-m         ###   ########.fr       */
+/*   Updated: 2023/06/09 21:11:26 by pvital-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef GET_NEXT_LINE_BONUS_H
-# define GET_NEXT_LINE_BONUS_H
+#ifndef GET_NEXT_LINE_H
+# define GET_NEXT_LINE_H
 
 # include <fcntl.h>
 # include <limits.h>

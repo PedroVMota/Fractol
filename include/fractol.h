@@ -6,7 +6,7 @@
 /*   By: pvital-m <pvital-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/26 10:44:57 by pvital-m          #+#    #+#             */
-/*   Updated: 2023/06/09 18:20:45 by pvital-m         ###   ########.fr       */
+/*   Updated: 2023/06/09 21:11:35 by pvital-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -98,7 +98,7 @@ int			ft_render_frame(t_win *main);
 
 // Formulas
 void		initialize_data(t_win *screen);
-int	leaf(float const_r, float const_i, t_win *screen);
+int			leaf(float const_r, float const_i, t_win *screen);
 void		build(t_win *screen);
 int			julia(t_win *screen, double zr, double zi);
 int			mandelbrot(float cr, float ci, t_win *screen);

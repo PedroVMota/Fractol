@@ -6,7 +6,7 @@
 /*   By: pvital-m <pvital-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/27 17:33:24 by pvital-m          #+#    #+#             */
-/*   Updated: 2023/06/09 15:47:03 by pvital-m         ###   ########.fr       */
+/*   Updated: 2023/06/09 21:10:32 by pvital-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,10 +14,10 @@
 
 int	mandelbrot(float cr, float ci, t_win *screen)
 {
-	float zr;
-	float zi;
-	int i;
-	float tmp;
+	float	zr;
+	float	zi;
+	int		i;
+	float	tmp;
 
 	zr = 0;
 	zi = 0;
