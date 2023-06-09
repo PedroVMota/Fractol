@@ -6,7 +6,7 @@
 /*   By: pvital-m <pvital-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/20 16:33:23 by pvital-m          #+#    #+#             */
-/*   Updated: 2023/06/09 11:48:34 by pvital-m         ###   ########.fr       */
+/*   Updated: 2023/06/09 13:44:08 by pvital-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ int	main(int ac, char **av)
 {
 	if (ac == 1)
 		print_help_screen();
-	config_all(av);
+	config_all(av, ac);
 	window_init();
 	return (0);
 }

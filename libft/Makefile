@@ -6,12 +6,12 @@
 #    By: pvital-m <pvital-m@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/03/05 14:49:36 by pvital-m          #+#    #+#              #
-#    Updated: 2023/05/26 10:02:10 by pvital-m         ###   ########.fr        #
+#    Updated: 2023/06/09 13:57:19 by pvital-m         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 CC		= cc
-CFLAGS	= -Wall -Wextra -Werror
+CFLAGS	= -Wall -Wextra -Werror -g
 LIB1	= @ar -rcs
 LIB2	= @ranlib
 RM		= @/bin/rm -f
@@ -25,7 +25,7 @@ SRCS	= 	./src/ft_isalpha.c ./src/ft_isdigit.c ./src/ft_isalnum.c ./src/ft_isasci
 			./src/ft_memcpy.c ./src/ft_memmove.c ./src/ft_strlcpy.c ./src/ft_strlcat.c \
 			./src/ft_toupper.c ./src/ft_tolower.c ./src/ft_strchr.c ./src/ft_strrchr.c \
 			./src/ft_strncmp.c ./src/ft_memchr.c ./src/ft_memcmp.c ./src/ft_strnstr.c \
-			./src/ft_atoi.c ./src/ft_calloc.c ./src/ft_strdup.c ./src/ft_substr.c \
+			./src/ft_atoi.c ./src/ft_atof.c ./src/ft_calloc.c ./src/ft_strdup.c ./src/ft_substr.c \
 			./src/ft_strjoin.c ./src/ft_strtrim.c ./src/ft_split.c ./src/ft_itoa.c \
 			./src/ft_strmapi.c ./src/ft_striteri.c ./src/ft_putchar_fd.c \
 			./src/ft_putstr_fd.c ./src/ft_putendl_fd.c ./src/ft_putnbr_fd.c \
@@ -41,6 +41,11 @@ BONUS_S	= 	./src/ft_lstnew.c ./src/ft_lstadd_front.c ./src/ft_lstsize.c ./src/ft
 			
 BONUS_O	= $(BONUS_S:.c=.o)
 
+COLOUR_GREEN=\033[7;1;32m
+COLOUR_END=\033[0m
+COLOUR_YELLOW=\033[7;1;33m
+
+
 all:		$(NAME)
 
 $(NAME):	$(OBJS)
@@ -52,7 +57,8 @@ bonus:		$(NAME) $(BONUS_O)
 			$(LIB2) $(NAME)
 
 %.o : %.c
-			$(CC) $(INCLUDE) -c $< -o $(<:.c=.o)
+			@printf "$(COLOUR_GREEN) Compiling...$(COLOUR_END)\r"
+			@$(CC) $(CFLAGS) $(INCLUDE) -c $< -o $(<:.c=.o)
 
 clean:
 			$(RM) $(OBJS) $(BONUS_O)

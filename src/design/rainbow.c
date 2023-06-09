@@ -11,9 +11,9 @@ void	rainbow_palette(t_win *screen, int n, int x, int y)
 	red = 0;
 	green = 0;
 	blue = 0;
-	if (n < MAX_INTERACTIONS)
+	if (n < screen->n)
 	{
-		t = (double)n / MAX_INTERACTIONS;
+		t = (double)n / screen->n;
 		red = (int)(9 * (1 - t) * t * t * t * 255);
 		green = (int)(15 * (1 - t) * (1 - t) * t * t * 255);
 		blue = (int)(8.5 * (1 - t) * (1 - t) * (1 - t) * t * 255);

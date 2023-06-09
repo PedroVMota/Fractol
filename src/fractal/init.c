@@ -63,8 +63,8 @@ void	build(t_win *screen)
 		x = -1;
 		while (++x < WIDTH)
 		{
-			cr = set_value(screen->min_r, screen->max_r, x, WIDTH);
-			ci = set_value(screen->min_i, screen->max_i, y, HEIGHT);
+			cr = set_value(screen->min_r, screen->max_r, x + screen->mouse->mouse_x, WIDTH - 1);
+            ci = set_value(screen->min_i, screen->max_i, y + screen->mouse->mouse_y, HEIGHT - 1);
 			interactions = fractal_selector(screen, cr, ci);
 			create_graph(screen, interactions, x, y);
 		}

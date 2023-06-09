@@ -1,6 +1,6 @@
 # CC			= 	cc -fsanitize=leak -g
 CC			= 	cc -g
-CFLAGS		= 	-O3 -Wall -Wextra -Werror -fsanitize=address
+CFLAGS		= 	-O3 -Wall -Wextra -Werror #-fsanitize=address
 RM			= 	/bin/rm -f
 NAME		= 	fractol
 INCLUDES	= 	-I include/
@@ -26,10 +26,11 @@ endif
 all: $(NAME) 
 
 $(NAME): $(OBJS)
-		make -C ./libft/ --no-print
-		$(CC) $(CFLAGS) $(^) libft/libft.a $(MLX_FLAGS) -o $(@)
+		@make -C ./libft/ --no-print
+		@$(CC) $(CFLAGS) $(^) libft/libft.a $(MLX_FLAGS) -o $(@)
 
 %.o: %.c
+	@printf "$(COLOUR_GREEN) Compiling...$(COLOUR_END)\r"
 	@$(CC) $(CFLAGS) $(INCLUDES) $(MLX_INCLUDE) -c $(^) -o $(@)
 
 bonus: all

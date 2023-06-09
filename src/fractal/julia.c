@@ -6,7 +6,7 @@
 /*   By: pvital-m <pvital-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/08 11:27:19 by pvital-m          #+#    #+#             */
-/*   Updated: 2023/06/08 11:27:29 by pvital-m         ###   ########.fr       */
+/*   Updated: 2023/06/09 15:46:57 by pvital-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ int	julia(t_win *screen, double zr, double zi)
 	double	tmp;
 
 	n = 0;
-	while (n < MAX_INTERACTIONS)
+	while (n < screen->n)
 	{
 		if ((zi * zi + zr * zr) > 4.0)
 			break ;

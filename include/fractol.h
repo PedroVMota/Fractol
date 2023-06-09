@@ -6,7 +6,7 @@
 /*   By: pvital-m <pvital-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/26 10:44:57 by pvital-m          #+#    #+#             */
-/*   Updated: 2023/06/09 13:16:41 by pvital-m         ###   ########.fr       */
+/*   Updated: 2023/06/09 15:55:53 by pvital-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,8 @@
 // Resulution
 # define WIDTH 500
 # define HEIGHT 500
-# define MAX_INTERACTIONS 150
+//another
+# define SHIFT_AMOUNT 10
 
 // # define malloc(x) NULL
 
@@ -46,9 +47,20 @@ typedef struct s_img
 	int		line_len;
 }			t_img;
 
+typedef struct s_axis
+{
+	int		mouse_x;
+	int		mouse_y;
+	float	offset_x;
+	float	offset_y;
+
+}			t_axis;
+
 typedef struct s_win
 {
 	t_img	*canva;
+	t_axis	*mouse;
+	int		n;
 	int		set;
 	void	*mlx_ptr;
 	void	*win_ptr;
@@ -68,7 +80,7 @@ typedef struct s_win
 }			t_win;
 
 // parsing
-void		config_all(char **av);
+void		config_all(char **av, int ac);
 
 // MLX FUNCTIONS
 void		place_pixel(t_win *main, int x, int y, int color);

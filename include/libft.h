@@ -6,7 +6,7 @@
 /*   By: pvital-m <pvital-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/26 23:45:49 by pvital-m          #+#    #+#             */
-/*   Updated: 2023/05/24 17:18:54 by pvital-m         ###   ########.fr       */
+/*   Updated: 2023/06/09 13:51:22 by pvital-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,8 +25,9 @@ typedef struct s_list
 
 void				*ft_memchr(const void *s, int c, size_t n);
 void				*ft_calloc(size_t count, size_t size);
-long					ft_atoi(const char *str);
+long				ft_atoi(const char *str);
 void				ft_bzero(void *s, size_t n);
+double				ft_atof(const char *str);
 int					ft_isalpha(int c);
 int					ft_isascii(int c);
 int					ft_isdigit(int a);
