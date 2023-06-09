@@ -32,25 +32,39 @@ typedef struct s_win
 }			t_win;
 
 */
+double	set_value(double min_value, double max_value, int coord, int total)
+{
+	double	range;
+	double	position;
+	double	value;
+	double	zoomed_value;
+
+	range = max_value - min_value;
+	position = (double)coord / total;
+	value = min_value + position * range;
+	zoomed_value = value / screen()->zoom;
+	return (zoomed_value);
+}
+
 void	build(t_win *screen)
 {
-	int x;
-	int y;
-	double cr;
-	double ci;
-	int interactions;
+	int		x;
+	int		y;
+	double	cr;
+	double	ci;
+	int		interactions;
 
 	interactions = 0;
 	y = -1;
+	ci = 0;
+	cr = 0;
 	while (++y < HEIGHT)
 	{
 		x = -1;
 		while (++x < WIDTH)
 		{
-			cr = screen->min_real + ((double)x / WIDTH) * (screen->max_real
-					- screen->min_real);
-			ci = screen->min_imaginary + ((double)y / HEIGHT)
-				* (screen->max_imaginary - screen->min_imaginary);
+			cr = set_value(screen->min_r, screen->max_r, x, WIDTH);
+			ci = set_value(screen->min_i, screen->max_i, y, HEIGHT);
 			interactions = fractal_selector(screen, cr, ci);
 			create_graph(screen, interactions, x, y);
 		}

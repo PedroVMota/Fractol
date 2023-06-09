@@ -10,23 +10,24 @@ static int	rgb(int r, int g, int b)
 	return (color);
 }
 
-static void	set_background(t_win *screen, int n, int x, int y)
+void	rainbow_palette(t_win *screen, int n, int x, int y)
 {
-	int	colors[6];
+	int		red;
+	int		green;
+	int		blue;
+	double	t;
+	int		color;
 
-	colors[0] = rgb(255, 57, 93);
-	colors[1] = rgb(255, 160, 93);
-	colors[2] = rgb(227, 128, 187);
-	colors[3] = rgb(255, 255, 255);
-	if (n >= 0 && n < 3)
-		place_pixel(screen, x, y, rgb(255, 57, 93));
-	if (n >= 3 && n < 10)
-		place_pixel(screen, x, y, rgb(255, 160, 93));
-	if (n >= 10 && n < 20)
-		place_pixel(screen, x, y, rgb(227, 128, 187));
-}
-
-void	rainbow_pallete(t_win *screen, int n, int x, int y)
-{
-	set_background(screen, n, x, y);
+	red = 0;
+	green = 0;
+	blue = 0;
+	if (n < MAX_INTERACTIONS)
+	{
+		t = (double)n / MAX_INTERACTIONS;
+		red = (int)(9 * (1 - t) * t * t * t * 255);
+		green = (int)(15 * (1 - t) * (1 - t) * t * t * 255);
+		blue = (int)(8.5 * (1 - t) * (1 - t) * (1 - t) * t * 255);
+	}
+	color = (red << 16) | (green << 8) | blue;
+	place_pixel(screen, x, y, color);
 }

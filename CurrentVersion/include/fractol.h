@@ -6,7 +6,7 @@
 /*   By: pvital-m <pvital-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/26 10:44:57 by pvital-m          #+#    #+#             */
-/*   Updated: 2023/06/06 21:50:53 by pvital-m         ###   ########.fr       */
+/*   Updated: 2023/06/08 15:00:52 by pvital-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,7 @@
 // Color
 # define ZEBRA 1
 # define RAINBOW 2
+# define MONO_COLOR 3
 // Resulution
 # define WIDTH 500
 # define HEIGHT 500
@@ -49,10 +50,10 @@ typedef struct s_win
 	int		set;
 	void	*mlx_ptr;
 	void	*win_ptr;
-	int		min_real;
-	int		max_real;
-	int		min_imaginary;
-	int		max_imaginary;
+	float	min_r;
+	float	max_r;
+	float	min_i;
+	float	max_i;
 	int		pixel_x;
 	int		pixel_y;
 	float	cr;
@@ -61,6 +62,7 @@ typedef struct s_win
 	float	real_x;
 	float	fraction_x;
 	int		pallete;
+	int		color;
 }			t_win;
 
 // parsing
@@ -81,11 +83,14 @@ void		initialize_data(t_win *screen);
 void		build(t_win *screen);
 int			julia(t_win *screen, double zr, double zi);
 int			mandelbrot(float cr, float ci, t_win *screen);
+// Colors Utils;
+int			color_percent(int color, double percent);
+int			mix_colors(int start, int final, int percent);
 
 // colors
 void		create_graph(t_win *screen, int interactions, int x, int y);
 void		zebra_pallete(t_win *main, int inte, int x, int y);
-void		rainbow_pallete(t_win *screen, int interactions, int x, int y);
+void		rainbow_palette(t_win *screen, int interactions, int x, int y);
 
 // events
 int			key_hook(int keycode, t_win *window);

@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   utils.c                                            :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: pvital-m <pvital-m@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/06/09 10:57:05 by pvital-m          #+#    #+#             */
+/*   Updated: 2023/06/09 10:57:05 by pvital-m         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "fractol.h"
 
 void	fill_color(t_fractal *all, int color, int stripe)
@@ -64,14 +76,13 @@ int	color_blender(int color_beggin, int final_color, double fraction)
 	return (0xFF << 24 | start_rgb[0] << 16 | start_rgb[1] << 8 | start_rgb[2]);
 }
 
-
 /*
 	Set Monochromatic Color Function:
 	-> Changes the color of the fractal to a single color.
 	-> White when close to the border of the fractal.
 	-> Black to the color wanted.
 */
-void set_monocromatic_color(t_fractal *all, int color)
+void	set_monocromatic_color(t_fractal *all, int color)
 {
 	int		i;
 	int		j;
@@ -79,14 +90,13 @@ void set_monocromatic_color(t_fractal *all, int color)
 	int		color1;
 	int		color2;
 
-
 	color1 = 0x000000;
 	color2 = color;
 	i = 0;
-	while(i < MAX_INTERACTIONS)
+	while (i < MAX_INTERACTIONS)
 	{
 		j = 0;
-		while(j < (MAX_INTERACTIONS / 2))
+		while (j < (MAX_INTERACTIONS / 2))
 		{
 			fraction = (double)j / (double)(MAX_INTERACTIONS / 2);
 			all->palete[i + j] = color_blender(color1, color2, fraction);
@@ -108,12 +118,12 @@ void set_monocromatic_color(t_fractal *all, int color)
 	-> The third color is the color wanted but with 50% of transparency.
 	-> The fourth color is white.
 */
-void rainbow_set_color(t_fractal *all, int colors[4], int n)
+void	rainbow_set_color(t_fractal *all, int colors[4], int n)
 {
-	int i;
-	int j;
-	int x;
-	int fraction;
+	int	i;
+	int	j;
+	int	x;
+	int	fraction;
 
 	fraction = 0;
 	x = 0;
@@ -124,7 +134,8 @@ void rainbow_set_color(t_fractal *all, int colors[4], int n)
 		while ((i + j) < MAX_INTERACTIONS && j < (MAX_INTERACTIONS / (n - 1)))
 		{
 			fraction = (double)j / (MAX_INTERACTIONS / (n - 1));
-			all->palete[i + j] = color_blender(colors[x], colors[x + 1], fraction);
+			all->palete[i + j] = color_blender(colors[x], colors[x + 1],
+				fraction);
 			j++;
 		}
 		x++;
