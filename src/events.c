@@ -6,7 +6,7 @@
 /*   By: pvital-m <pvital-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/08 13:10:01 by pvital-m          #+#    #+#             */
-/*   Updated: 2023/06/09 11:47:42 by pvital-m         ###   ########.fr       */
+/*   Updated: 2023/06/09 13:01:22 by pvital-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ int	key_hook(int keycode, t_win *window)
 {
 	printf("Keyboard: keycode: %d\n", keycode);
 	if (keycode == 53 || keycode == 65307)
-		close_program(window);
+		close_program(window, "The program closed with success", 1);
 	if (keycode == 126 || keycode == 65364)
 		window->ci += 0.1;
 	if (keycode == 125 || keycode == 65362)

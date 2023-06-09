@@ -1,6 +1,6 @@
 # CC			= 	cc -fsanitize=leak -g
 CC			= 	cc -g
-CFLAGS		= 	-O3 #-Wall -Wextra -Werror
+CFLAGS		= 	-O3 -Wall -Wextra -Werror -fsanitize=address
 RM			= 	/bin/rm -f
 NAME		= 	fractol
 INCLUDES	= 	-I include/

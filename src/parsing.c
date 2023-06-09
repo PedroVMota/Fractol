@@ -6,7 +6,7 @@
 /*   By: pvital-m <pvital-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/20 08:51:07 by pvital-m          #+#    #+#             */
-/*   Updated: 2023/06/09 11:42:32 by pvital-m         ###   ########.fr       */
+/*   Updated: 2023/06/09 13:13:35 by pvital-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,12 +46,12 @@ void config_all(char **av)
 	screen()->ci = 0.156;
 }
 
-void	print_help_screen(void)
+void print_help_screen(void)
 {
-	ft_printf("=========== HELP SCREEN ===========\n");
-	ft_printf("Usage: ./fractol [fractal]\n");
-	ft_printf("[m] >>> Mandelbrot\n");
-	ft_printf("[j] >>> Julia\n");
-	ft_printf("=========== HELP SCREEN ===========\n");
-	exit(2);
+    printf("=========== HELP SCREEN ===========\n");
+    printf("Usage of Fractol:\n");
+    printf("    Mandelbrot: ./fractol {Mandelbrot || m} {color}\n");
+    printf("    Julia: ./fractol {Julia || j} {Real} {Imaginary} {color}\n");
+    printf("===================================\n");
+    exit(2);
 }

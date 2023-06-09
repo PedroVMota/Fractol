@@ -1,15 +1,5 @@
 #include "fractol.h"
 
-static int	rgb(int r, int g, int b)
-{
-	int	color;
-
-	color = 0 << 24 | r << 16 | g << 8 | b;
-	if (color < 0)
-		color = -color;
-	return (color);
-}
-
 void	rainbow_palette(t_win *screen, int n, int x, int y)
 {
 	int		red;

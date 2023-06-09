@@ -6,7 +6,7 @@
 /*   By: pvital-m <pvital-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/26 10:44:57 by pvital-m          #+#    #+#             */
-/*   Updated: 2023/06/09 11:52:22 by pvital-m         ###   ########.fr       */
+/*   Updated: 2023/06/09 13:16:41 by pvital-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,8 @@
 # define WIDTH 500
 # define HEIGHT 500
 # define MAX_INTERACTIONS 150
+
+// # define malloc(x) NULL
 
 typedef struct s_img
 {
@@ -98,5 +100,5 @@ int			mouse_hook(int button, int x, int y, t_win *window);
 
 // DEBUG ONLY
 void		print_data(void);
-void		close_program(t_win *screen);
+void		close_program(t_win *screen, char *msg, int status);
 #endif
