@@ -6,22 +6,24 @@
 /*   By: pvital-m <pvital-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/22 20:20:30 by pvital-m          #+#    #+#             */
-/*   Updated: 2023/06/09 15:45:21 by pvital-m         ###   ########.fr       */
+/*   Updated: 2023/06/09 18:19:30 by pvital-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fractol.h"
+
 static void	set_mouse(t_win *screen)
 {
 	t_axis	*local;
 
 	local = malloc(sizeof(t_axis));
-	if(!local)
+	if (!local)
 		close_program(screen, "Mouse configuration went wrong!", 2);
 	local->mouse_x = 0;
 	local->mouse_y = 0;
 	screen->mouse = local;
 }
+
 static void	set_image(t_win *screen)
 {
 	t_img	local;
@@ -32,7 +34,6 @@ static void	set_image(t_win *screen)
 	local.line_len = 0;
 	local.endian = 0;
 	screen->canva = &local;
-
 }
 
 void	initialize_data(t_win *screen)
@@ -51,7 +52,7 @@ void	initialize_data(t_win *screen)
 	screen->real_x = 1;
 	screen->zoom = 1;
 	screen->fraction_x = 1;
-	screen->pallete = RAINBOW;
+	screen->pallete = ZEBRA;
 	screen->color = 0xFF1a4c;
 }
 

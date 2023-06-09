@@ -6,7 +6,7 @@
 /*   By: pvital-m <pvital-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/27 17:35:24 by pvital-m          #+#    #+#             */
-/*   Updated: 2023/06/09 14:32:01 by pvital-m         ###   ########.fr       */
+/*   Updated: 2023/06/09 17:05:02 by pvital-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,8 +27,8 @@ static void	clean_screen(t_win *ptr)
 		return ;
 	if (ptr->win_ptr)
 		mlx_destroy_window(ptr->mlx_ptr, ptr->win_ptr);
-	if (ptr->mlx_ptr)
-		mlx_destroy_display(ptr->mlx_ptr);
+	/* 	if (ptr->mlx_ptr)
+			mlx_destroy_display(ptr->mlx_ptr); */
 	free(ptr->mlx_ptr);
 }
 

@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   init.c                                             :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: pvital-m <pvital-m@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/06/09 18:13:21 by pvital-m          #+#    #+#             */
+/*   Updated: 2023/06/09 18:18:46 by pvital-m         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "fractol.h"
 
 static int	fractal_selector(t_win *screen, double real_part,
@@ -7,31 +19,11 @@ static int	fractal_selector(t_win *screen, double real_part,
 		return (julia(screen, real_part, imaginary_part));
 	else if (screen->set == MANDELBROT)
 		return (mandelbrot(real_part, imaginary_part, screen));
+	else if (screen->set == LEAF)
+		return (leaf(real_part, imaginary_part, screen));
 	return (0);
 }
 
-/*
-typedef struct s_win
-{
-	t_img	*canva;
-	int		set;
-	void	*mlx_ptr;
-	void	*win_ptr;
-	int		min_real;
-	int		max_real;
-	int		min_imaginary;
-	int		max_imaginary;
-	int		pixel_x;
-	int		pixel_y;
-	float	cr;
-	float	ci;
-	float	zoom;
-	float	real_x;
-	float	fraction_x;
-	int		pallete;
-}			t_win;
-
-*/
 double	set_value(double min_value, double max_value, int coord, int total)
 {
 	double	range;
@@ -63,9 +55,12 @@ void	build(t_win *screen)
 		x = -1;
 		while (++x < WIDTH)
 		{
-			cr = set_value(screen->min_r, screen->max_r, x + screen->mouse->mouse_x, WIDTH - 1);
-            ci = set_value(screen->min_i, screen->max_i, y + screen->mouse->mouse_y, HEIGHT - 1);
+			cr = set_value(screen->min_r, screen->max_r, x \
+				+ screen->mouse->mouse_x, WIDTH - 1);
+			ci = set_value(screen->min_i, screen->max_i, y \
+				+ screen->mouse->mouse_y, HEIGHT - 1);
 			interactions = fractal_selector(screen, cr, ci);
+			printf("Interactions %d\n", interactions);
 			create_graph(screen, interactions, x, y);
 		}
 	}

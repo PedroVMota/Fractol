@@ -6,7 +6,7 @@
 /*   By: pvital-m <pvital-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/26 10:44:57 by pvital-m          #+#    #+#             */
-/*   Updated: 2023/06/09 15:55:53 by pvital-m         ###   ########.fr       */
+/*   Updated: 2023/06/09 18:20:45 by pvital-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,8 +24,10 @@
 # include <stdio.h>
 # include <stdlib.h>
 // Set
+
 # define MANDELBROT 1
 # define JULIA 2
+# define LEAF 3
 // Color
 # define ZEBRA 1
 # define RAINBOW 2
@@ -33,7 +35,9 @@
 // Resulution
 # define WIDTH 500
 # define HEIGHT 500
-//another
+# define TRUNK_SIZE 0.5
+# define ANGLE 0.3
+// another
 # define SHIFT_AMOUNT 10
 
 // # define malloc(x) NULL
@@ -94,6 +98,7 @@ int			ft_render_frame(t_win *main);
 
 // Formulas
 void		initialize_data(t_win *screen);
+int	leaf(float const_r, float const_i, t_win *screen);
 void		build(t_win *screen);
 int			julia(t_win *screen, double zr, double zi);
 int			mandelbrot(float cr, float ci, t_win *screen);

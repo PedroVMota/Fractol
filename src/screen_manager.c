@@ -6,7 +6,7 @@
 /*   By: pvital-m <pvital-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/20 16:25:51 by pvital-m          #+#    #+#             */
-/*   Updated: 2023/06/09 13:05:23 by pvital-m         ###   ########.fr       */
+/*   Updated: 2023/06/09 18:17:44 by pvital-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ void	update_image_display(t_win *main)
 {
 	if (!main->canva)
 		close_program(main, "There is no pointer to canva", 2);
-	mlx_put_image_to_window(main->mlx_ptr, main->win_ptr, main->canva->img_ptr,
+	mlx_put_image_to_window(main->mlx_ptr, main->win_ptr, main->canva->img_ptr, \
 			0, 0);
 }
 

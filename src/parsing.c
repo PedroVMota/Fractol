@@ -6,7 +6,7 @@
 /*   By: pvital-m <pvital-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/20 08:51:07 by pvital-m          #+#    #+#             */
-/*   Updated: 2023/06/09 14:08:59 by pvital-m         ###   ########.fr       */
+/*   Updated: 2023/06/09 17:53:56 by pvital-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,7 @@ static void	set_lower_case(char *str)
 		i++;
 	}
 }
+
 static void	set_type_of_fractol(char *fractol)
 {
 	set_lower_case(fractol);
@@ -30,16 +31,20 @@ static void	set_type_of_fractol(char *fractol)
 		|| ft_strncmp(fractol, "m", 2) == 0)
 		screen()->set = MANDELBROT;
 	else if (ft_strncmp(fractol, "julia", ft_strlen("julia") + 1) == 0
-			|| ft_strncmp(fractol, "j", 2) == 0)
+		|| ft_strncmp(fractol, "j", 2) == 0)
 		screen()->set = JULIA;
+	else if (ft_strncmp(fractol, "leaf", ft_strlen("leaf") + 1) == 0
+		|| ft_strncmp(fractol, "l", 2) == 0)
+		screen()->set = LEAF;
 	else
 		print_help_screen();
 }
+
 void	config_all(char **av, int ac)
 {
 	set_type_of_fractol(av[1]);
 	initialize_data(screen());
-	if (screen()->set == MANDELBROT && ac == 2)
+	if (screen()->set != JULIA && ac == 2)
 	{
 		screen()->cr = 0;
 		screen()->ci = 0;
@@ -59,6 +64,7 @@ void	print_help_screen(void)
 	printf("=========== HELP SCREEN ===========\n");
 	printf("Usage of Fractol:\n");
 	printf("    Mandelbrot: ./fractol {Mandelbrot || m} {color}\n");
+	printf("    Leaf: ./fractol {Leaf || l} {color}\n");
 	printf("    Julia: ./fractol {Julia || j} {Real} {Imaginary} {color}\n");
 	printf("===================================\n");
 	close_program(screen(), "Program was not executed correctly", 2);

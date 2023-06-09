@@ -16,11 +16,11 @@ COLOUR_YELLOW=\033[7;1;33m
 ifeq ($(UNAME), Darwin)
 	MLX_LIB_DIR = minilbx_opengl/
 	MLX_INCLUDE = -Iminilbx_opengl
-	MLX_FLAGS = -L$(MLX_LIB_DIR) -lmlx -framework OpenGL -framework AppKit -O3
+	MLX_FLAGS = -L$(MLX_LIB_DIR) -lmlx -framework OpenGL -framework AppKit
 else
 	MLX_LIB_DIR = mlx_linux/
 	MLX_INCLUDE = -Imlx_linux
-	MLX_FLAGS = -L$(MLX_LIB_DIR) -lmlx_Linux -L/usr/lib -lXext -lX11 -lm -lz -O3
+	MLX_FLAGS = -L$(MLX_LIB_DIR) -lmlx_Linux -L/usr/lib -lXext -lX11 -lm -lz
 endif
 
 all: $(NAME) 

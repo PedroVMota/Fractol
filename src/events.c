@@ -6,7 +6,7 @@
 /*   By: pvital-m <pvital-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/08 13:10:01 by pvital-m          #+#    #+#             */
-/*   Updated: 2023/06/09 15:55:53 by pvital-m         ###   ########.fr       */
+/*   Updated: 2023/06/09 16:23:49 by pvital-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,6 @@ static void	modified_number(float *n, float increament)
 
 int	key_hook(int keycode, t_win *window)
 {
-	printf("Keyboard: keycode: %d\n", keycode);
 	if (keycode == 53 || keycode == 65307)
 		close_program(window, "The program closed with success", 1);
 	if (keycode == 126 || keycode == 65364)
@@ -39,7 +38,11 @@ int	key_hook(int keycode, t_win *window)
 		modified_number(&window->cr, 0.005);
 	if (keycode == 123 || keycode == 65363)
 		modified_number(&window->cr, -0.005);
-	if (keycode == 32)
+	if (keycode == 24)
+		window->n += 10;
+	if (keycode == 27)
+		window->n -= 10;
+	if (keycode == 32 || keycode == 49)
 		switch_color();
 	build(window);
 	(void)window;
@@ -48,8 +51,6 @@ int	key_hook(int keycode, t_win *window)
 
 int	mouse_hook(int button, int x, int y, t_win *window)
 {
-	printf("Mouse X> %i\n", window->mouse->mouse_x);
-	printf("Mouse Y> %i\n", window->mouse->mouse_y);
 	window->mouse->offset_x = (x - (WIDTH / 2)) * 0.1;
 	window->mouse->offset_y = (y - (HEIGHT / 2)) * 0.1;
 	if (button == 4)
