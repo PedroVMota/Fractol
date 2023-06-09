@@ -6,12 +6,36 @@
 /*   By: pvital-m <pvital-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/20 09:05:26 by pvital-m          #+#    #+#             */
-/*   Updated: 2023/06/08 14:55:51 by pvital-m         ###   ########.fr       */
+/*   Updated: 2023/06/09 11:37:54 by pvital-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fractol.h"
 
+void	mono_cromatic(t_win *screen, int n, int x, int y)
+{
+	int		red;
+	int		green;
+	int		blue;
+	double	t;
+	int		color;
+
+	red = 0;
+	green = 0;
+	blue = 0;
+	if (n < MAX_INTERACTIONS)
+	{
+		if (n < MAX_INTERACTIONS)
+    {
+        t = (double)n / MAX_INTERACTIONS;
+        red = ((screen->color >> 16) & 0xFF) * t + ((0 >> 16) & 0xFF) * (1 - t);
+        green = ((screen->color >> 8) & 0xFF) * t + ((0 >> 8) & 0xFF) * (1 - t);
+        blue = (screen->color & 0xFF) * t + (0 & 0xFF) * (1 - t);
+    }
+	}
+	color = (red << 16) | (green << 8) | blue;
+	place_pixel(screen, x, y, color);
+}
 
 void	create_graph(t_win *screen, int interactions, int x, int y)
 {
@@ -19,5 +43,7 @@ void	create_graph(t_win *screen, int interactions, int x, int y)
 		zebra_pallete(screen, interactions, x, y);
 	if (screen->pallete == RAINBOW)
 		rainbow_palette(screen, interactions, x, y);
+	if(screen->pallete == MONO_COLOR)
+		mono_cromatic(screen, interactions, x, y);
 	return ;
 }

@@ -6,7 +6,7 @@
 /*   By: pvital-m <pvital-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/22 20:20:30 by pvital-m          #+#    #+#             */
-/*   Updated: 2023/06/08 14:49:32 by pvital-m         ###   ########.fr       */
+/*   Updated: 2023/06/09 11:35:26 by pvital-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ void	initialize_data(t_win *screen)
 	screen->real_x = 1;
 	screen->zoom = 1;
 	screen->fraction_x = 1;
-	screen->pallete = MONO_COLOR;
+	screen->pallete = RAINBOW;
 	screen->color = 0xFF1a4c;
 }
 
