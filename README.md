@@ -69,7 +69,7 @@ To explore the Julia fractal using the Fractol program:
 1. Run the Fractol program with the command:
 
 ```
-./fractol j
+./fractol julia real_constant imaginary_constant
 ```
 
 2. Move your mouse to change the position of the Julia set. Each location in the window represents a different constant for the Julia fractal. The fractal will update in real-time as you move the mouse.

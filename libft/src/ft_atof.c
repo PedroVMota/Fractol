@@ -6,7 +6,7 @@
 /*   By: pvital-m <pvital-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/09 13:51:08 by pvital-m          #+#    #+#             */
-/*   Updated: 2023/06/09 21:12:09 by pvital-m         ###   ########.fr       */
+/*   Updated: 2023/06/10 12:03:19 by pvital-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,12 +38,11 @@ double	ft_atof(const char *str)
 	nb = 0;
 	div = 0.1;
 	is_neg = 1;
-	i = skip_space_sign(str, &is_neg);
-	while (str[i] && ft_isdigit(str[i]) && str[i] != '.')
-	{
+	if (!str)
+		return (0);
+	i = skip_space_sign(str, &is_neg) - 1;
+	while (str[++i] && ft_isdigit(str[i]) && str[i] != '.')
 		nb = (nb * 10.0) + (str[i] - '0');
-		i++;
-	}
 	while (str[i] == '.' && str[i])
 		i++;
 	while (str[i] && ft_isdigit(str[i]))

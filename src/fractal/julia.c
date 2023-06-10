@@ -6,7 +6,7 @@
 /*   By: pvital-m <pvital-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/08 11:27:19 by pvital-m          #+#    #+#             */
-/*   Updated: 2023/06/10 11:03:18 by pvital-m         ###   ########.fr       */
+/*   Updated: 2023/06/10 11:09:22 by pvital-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 float	julia(t_win *screen, double zr, double zi)
 {
-	float		n;
+	float	n;
 	double	tmp;
 
 	n = 0;

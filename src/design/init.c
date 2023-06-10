@@ -6,13 +6,11 @@
 /*   By: pvital-m <pvital-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/20 09:05:26 by pvital-m          #+#    #+#             */
-/*   Updated: 2023/06/10 09:54:23 by pvital-m         ###   ########.fr       */
+/*   Updated: 2023/06/10 11:07:35 by pvital-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fractol.h"
-
-
 
 void	create_graph(t_win *screen, float interactions, int x, int y)
 {

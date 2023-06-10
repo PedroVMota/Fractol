@@ -6,7 +6,7 @@
 /*   By: pvital-m <pvital-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/09 18:13:21 by pvital-m          #+#    #+#             */
-/*   Updated: 2023/06/10 11:02:59 by pvital-m         ###   ########.fr       */
+/*   Updated: 2023/06/10 11:53:53 by pvital-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,10 +55,10 @@ void	build(t_win *screen)
 		x = -1;
 		while (++x < WIDTH)
 		{
-			cr = set_value(screen->min_r, screen->max_r, x
-				+ screen->mouse->mouse_x, WIDTH - 1);
-			ci = set_value(screen->min_i, screen->max_i, y
-				+ screen->mouse->mouse_y, HEIGHT - 1);
+			cr = set_value(screen->min_r, screen->max_r, x \
+				+ screen->mouse->mouse_x + screen->mouse->offset_x, WIDTH - 1);
+			ci = set_value(screen->min_i, screen->max_i, y \
+				+ screen->mouse->mouse_y + screen->mouse->offset_y, HEIGHT - 1);
 			interactions = fractal_selector(screen, cr, ci);
 			create_graph(screen, interactions, x, y);
 		}

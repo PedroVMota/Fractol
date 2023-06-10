@@ -6,7 +6,7 @@
 /*   By: pvital-m <pvital-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/08 13:10:01 by pvital-m          #+#    #+#             */
-/*   Updated: 2023/06/09 16:23:49 by pvital-m         ###   ########.fr       */
+/*   Updated: 2023/06/10 12:19:42 by pvital-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,28 +24,36 @@ static void	switch_color(void)
 static void	modified_number(float *n, float increament)
 {
 	*n += increament;
+	build(screen());
 }
 
 int	key_hook(int keycode, t_win *window)
 {
 	if (keycode == 53 || keycode == 65307)
 		close_program(window, "The program closed with success", 1);
-	if (keycode == 126 || keycode == 65364)
+	else if (keycode == 126 || keycode == 65364)
 		modified_number(&window->ci, 0.005);
-	if (keycode == 125 || keycode == 65362)
+	else if (keycode == 125 || keycode == 65362)
 		modified_number(&window->ci, -0.005);
-	if (keycode == 124 || keycode == 65361)
+	else if (keycode == 124 || keycode == 65361)
 		modified_number(&window->cr, 0.005);
-	if (keycode == 123 || keycode == 65363)
+	else if (keycode == 123 || keycode == 65363)
 		modified_number(&window->cr, -0.005);
-	if (keycode == 24)
+	else if (keycode == 119)
+		modified_number(&window->mouse->offset_y, -SHIFT_AMOUNT);
+	else if (keycode == 115)
+		modified_number(&window->mouse->offset_y, SHIFT_AMOUNT);
+	else if (keycode == 97 || keycode == 0)
+		modified_number(&window->mouse->offset_x, -SHIFT_AMOUNT);
+	else if (keycode == 100 || keycode == 2)
+		modified_number(&window->mouse->offset_x, SHIFT_AMOUNT);
+	else if (keycode == 65451 || keycode == 24)
 		window->n += 10;
-	if (keycode == 27)
+	else if (keycode == 65453 || keycode == 44)
 		window->n -= 10;
-	if (keycode == 32 || keycode == 49)
+	else if (keycode == 32 || keycode == 49)
 		switch_color();
-	build(window);
-	(void)window;
+	printf("Key: %i\n", keycode);
 	return (0);
 }
 
