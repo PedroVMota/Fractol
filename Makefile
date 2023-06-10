@@ -119,6 +119,6 @@ upload: $(msg)
 	@read -p "Enter commit message: " msg; \
 	git add .; \
 	git commit -m "$$msg"; \
-	git push;
+	git push --force;
 
 re: fclean all
