@@ -6,7 +6,7 @@
 /*   By: pvital-m <pvital-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/08 13:10:01 by pvital-m          #+#    #+#             */
-/*   Updated: 2023/06/10 12:19:42 by pvital-m         ###   ########.fr       */
+/*   Updated: 2023/06/10 12:29:46 by pvital-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,9 +39,9 @@ int	key_hook(int keycode, t_win *window)
 		modified_number(&window->cr, 0.005);
 	else if (keycode == 123 || keycode == 65363)
 		modified_number(&window->cr, -0.005);
-	else if (keycode == 119)
+	else if (keycode == 119 || keycode == 13)
 		modified_number(&window->mouse->offset_y, -SHIFT_AMOUNT);
-	else if (keycode == 115)
+	else if (keycode == 115 || keycode == 1)
 		modified_number(&window->mouse->offset_y, SHIFT_AMOUNT);
 	else if (keycode == 97 || keycode == 0)
 		modified_number(&window->mouse->offset_x, -SHIFT_AMOUNT);
@@ -53,7 +53,6 @@ int	key_hook(int keycode, t_win *window)
 		window->n -= 10;
 	else if (keycode == 32 || keycode == 49)
 		switch_color();
-	printf("Key: %i\n", keycode);
 	return (0);
 }
 
