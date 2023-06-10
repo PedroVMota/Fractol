@@ -6,7 +6,7 @@
 /*   By: pvital-m <pvital-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/09 18:13:21 by pvital-m          #+#    #+#             */
-/*   Updated: 2023/06/10 09:29:01 by pvital-m         ###   ########.fr       */
+/*   Updated: 2023/06/10 11:02:59 by pvital-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@ void	build(t_win *screen)
 	int		y;
 	double	cr;
 	double	ci;
-	float		interactions;
+	int		interactions;
 
 	interactions = 0;
 	y = -1;

@@ -6,7 +6,7 @@
 /*   By: pvital-m <pvital-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/09 17:05:26 by pvital-m          #+#    #+#             */
-/*   Updated: 2023/06/10 08:38:40 by pvital-m         ###   ########.fr       */
+/*   Updated: 2023/06/10 11:03:08 by pvital-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ float	tricorn(float const_r, float const_i, t_win *screen)
 		tmp = -2 * zr * zi + const_i;
 		zr = zr * zr - zi * zi + const_r;
 		zi = tmp;
-		n += 0.5;
+		n++;
 	}
 	return (n);
 }

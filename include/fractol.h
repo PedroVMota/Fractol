@@ -6,7 +6,7 @@
 /*   By: pvital-m <pvital-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/26 10:44:57 by pvital-m          #+#    #+#             */
-/*   Updated: 2023/06/10 09:54:06 by pvital-m         ###   ########.fr       */
+/*   Updated: 2023/06/10 11:02:48 by pvital-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,8 +33,8 @@
 # define RAINBOW 2
 # define MONO_COLOR 3
 // Resulution
-# define WIDTH  300
-# define HEIGHT 300
+# define WIDTH  1000
+# define HEIGHT 500
 # define TRUNK_SIZE 0.5
 # define ANGLE 0.3
 // another
@@ -64,7 +64,7 @@ typedef struct s_win
 {
 	t_img	*canva;
 	t_axis	*mouse;
-	float	n;
+	int	n;
 	int		set;
 	void	*mlx_ptr;
 	void	*win_ptr;
