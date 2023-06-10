@@ -6,7 +6,7 @@
 /*   By: pvital-m <pvital-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/20 16:33:23 by pvital-m          #+#    #+#             */
-/*   Updated: 2023/06/09 13:44:08 by pvital-m         ###   ########.fr       */
+/*   Updated: 2023/06/10 08:27:03 by pvital-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,6 @@ int	ft_render_frame(t_win *screen)
 	build(screen);
 	mlx_hook(screen->win_ptr, 2L, 1L << 0, key_hook, screen);
 	mlx_mouse_hook(screen->win_ptr, mouse_hook, screen);
-	update_image_display(screen);
 	mlx_loop(screen->mlx_ptr);
 	return (0);
 }

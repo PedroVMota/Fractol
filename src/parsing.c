@@ -6,7 +6,7 @@
 /*   By: pvital-m <pvital-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/20 08:51:07 by pvital-m          #+#    #+#             */
-/*   Updated: 2023/06/09 17:53:56 by pvital-m         ###   ########.fr       */
+/*   Updated: 2023/06/10 09:26:24 by pvital-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,9 +33,9 @@ static void	set_type_of_fractol(char *fractol)
 	else if (ft_strncmp(fractol, "julia", ft_strlen("julia") + 1) == 0
 		|| ft_strncmp(fractol, "j", 2) == 0)
 		screen()->set = JULIA;
-	else if (ft_strncmp(fractol, "leaf", ft_strlen("leaf") + 1) == 0
-		|| ft_strncmp(fractol, "l", 2) == 0)
-		screen()->set = LEAF;
+	else if (ft_strncmp(fractol, "tricorn", ft_strlen("tricorn") + 1) == 0
+		|| ft_strncmp(fractol, "t", 2) == 0)
+		screen()->set = TRICORN;
 	else
 		print_help_screen();
 }
@@ -64,7 +64,7 @@ void	print_help_screen(void)
 	printf("=========== HELP SCREEN ===========\n");
 	printf("Usage of Fractol:\n");
 	printf("    Mandelbrot: ./fractol {Mandelbrot || m} {color}\n");
-	printf("    Leaf: ./fractol {Leaf || l} {color}\n");
+	printf("    Tricorn: ./fractol {Tricord || t} {color}\n");
 	printf("    Julia: ./fractol {Julia || j} {Real} {Imaginary} {color}\n");
 	printf("===================================\n");
 	close_program(screen(), "Program was not executed correctly", 2);

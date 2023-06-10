@@ -6,17 +6,17 @@
 /*   By: pvital-m <pvital-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/27 17:33:24 by pvital-m          #+#    #+#             */
-/*   Updated: 2023/06/09 21:10:32 by pvital-m         ###   ########.fr       */
+/*   Updated: 2023/06/10 08:38:35 by pvital-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fractol.h"
 
-int	mandelbrot(float cr, float ci, t_win *screen)
+float	mandelbrot(float cr, float ci, t_win *screen)
 {
 	float	zr;
 	float	zi;
-	int		i;
+	float		i;
 	float	tmp;
 
 	zr = 0;
@@ -30,7 +30,7 @@ int	mandelbrot(float cr, float ci, t_win *screen)
 		tmp = 2 * zr * zi + ci;
 		zr = zr * zr - zi * zi + cr;
 		zi = tmp;
-		i++;
+		i += 0.5;
 	}
 	return (i);
 }

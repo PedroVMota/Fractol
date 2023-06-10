@@ -6,7 +6,7 @@
 /*   By: pvital-m <pvital-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/08 12:04:09 by pvital-m          #+#    #+#             */
-/*   Updated: 2023/06/09 21:10:47 by pvital-m         ###   ########.fr       */
+/*   Updated: 2023/06/10 08:35:52 by pvital-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ static int	rgb(int t, int r, int g, int b)
 	return (color);
 }
 
-void	zebra_pallete(t_win *main, int inte, int x, int y)
+void	zebra_pallete(t_win *main, float inte, int x, int y)
 {
 	if (is_even(inte))
 		place_pixel(main, x, y, rgb(0, 0, 0, 0));

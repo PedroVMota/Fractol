@@ -6,7 +6,7 @@
 /*   By: pvital-m <pvital-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/26 10:44:57 by pvital-m          #+#    #+#             */
-/*   Updated: 2023/06/09 21:11:35 by pvital-m         ###   ########.fr       */
+/*   Updated: 2023/06/10 09:54:06 by pvital-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,14 +27,14 @@
 
 # define MANDELBROT 1
 # define JULIA 2
-# define LEAF 3
+# define TRICORN 3
 // Color
 # define ZEBRA 1
 # define RAINBOW 2
 # define MONO_COLOR 3
 // Resulution
-# define WIDTH 500
-# define HEIGHT 500
+# define WIDTH  300
+# define HEIGHT 300
 # define TRUNK_SIZE 0.5
 # define ANGLE 0.3
 // another
@@ -64,7 +64,7 @@ typedef struct s_win
 {
 	t_img	*canva;
 	t_axis	*mouse;
-	int		n;
+	float	n;
 	int		set;
 	void	*mlx_ptr;
 	void	*win_ptr;
@@ -98,18 +98,19 @@ int			ft_render_frame(t_win *main);
 
 // Formulas
 void		initialize_data(t_win *screen);
-int			leaf(float const_r, float const_i, t_win *screen);
 void		build(t_win *screen);
-int			julia(t_win *screen, double zr, double zi);
-int			mandelbrot(float cr, float ci, t_win *screen);
+float		julia(t_win *screen, double zr, double zi);
+float		mandelbrot(float cr, float ci, t_win *screen);
+float		tricorn(float const_r, float const_i, t_win *screen);
 // Colors Utils;
 int			color_percent(int color, double percent);
 int			mix_colors(int start, int final, int percent);
 
 // colors
-void		create_graph(t_win *screen, int interactions, int x, int y);
-void		zebra_pallete(t_win *main, int inte, int x, int y);
-void		rainbow_palette(t_win *screen, int interactions, int x, int y);
+void		create_graph(t_win *screen, float interactions, int x, int y);
+void		zebra_pallete(t_win *main, float inte, int x, int y);
+void		rainbow_palette(t_win *screen, float interactions, int x, int y);
+void	color_shift(int n, int x, int y, float color_shift);
 
 // events
 int			key_hook(int keycode, t_win *window);

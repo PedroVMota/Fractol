@@ -6,15 +6,15 @@
 /*   By: pvital-m <pvital-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/08 11:27:19 by pvital-m          #+#    #+#             */
-/*   Updated: 2023/06/09 15:46:57 by pvital-m         ###   ########.fr       */
+/*   Updated: 2023/06/10 08:38:30 by pvital-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fractol.h"
 
-int	julia(t_win *screen, double zr, double zi)
+float	julia(t_win *screen, double zr, double zi)
 {
-	int		n;
+	float		n;
 	double	tmp;
 
 	n = 0;
@@ -25,7 +25,7 @@ int	julia(t_win *screen, double zr, double zi)
 		tmp = 2 * zr * zi + screen->ci;
 		zr = zr * zr - zi * zi + screen->cr;
 		zi = tmp;
-		n++;
+		n += 0.5;
 	}
 	return (n);
 }

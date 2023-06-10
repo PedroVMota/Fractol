@@ -6,7 +6,7 @@
 /*   By: pvital-m <pvital-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/22 20:20:30 by pvital-m          #+#    #+#             */
-/*   Updated: 2023/06/09 18:19:30 by pvital-m         ###   ########.fr       */
+/*   Updated: 2023/06/10 08:38:17 by pvital-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,17 +36,35 @@ static void	set_image(t_win *screen)
 	screen->canva = &local;
 }
 
+static void	set_limits_proportional(t_win *screen)
+{
+	double	aspect_ratio;
+	double	max_abs;
+
+	aspect_ratio = (double)WIDTH / HEIGHT;
+	max_abs = 2.0;
+	if (aspect_ratio > 1.0)
+	{
+		screen->max_r = max_abs;
+		screen->max_i = max_abs / aspect_ratio;
+	}
+	else
+	{
+		screen->max_r = max_abs * aspect_ratio;
+		screen->max_i = max_abs;
+	}
+	screen->min_r = -screen->max_r;
+	screen->min_i = -screen->max_i;
+}
+
 void	initialize_data(t_win *screen)
 {
 	set_image(screen);
 	set_mouse(screen);
+	set_limits_proportional(screen);
 	screen->n = 150;
 	screen->mlx_ptr = NULL;
 	screen->win_ptr = NULL;
-	screen->min_r = -2;
-	screen->max_r = 2;
-	screen->min_i = -2;
-	screen->max_i = 2;
 	screen->cr = 0;
 	screen->ci = 0;
 	screen->real_x = 1;

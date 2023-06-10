@@ -111,8 +111,14 @@ clean:
 	@$(RM) $(OBJS)
 
 fclean: clean
-	@printf " [$(RED)$(NAME)$(RESET)] Removing Everything\n"
+	@printf "[$(RED)$(NAME)$(RESET)] Removing Everything\n"
 	@$(RM) $(NAME)
 	@make fclean -C ./libft/ --no-print
+
+upload: $(msg)
+	@read -p "Enter commit message: " msg; \
+	git add .; \
+	git commit -m "$$msg"; \
+	git push;
 
 re: fclean all

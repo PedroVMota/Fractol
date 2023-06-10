@@ -6,7 +6,7 @@
 /*   By: pvital-m <pvital-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/09 18:13:21 by pvital-m          #+#    #+#             */
-/*   Updated: 2023/06/09 20:33:13 by pvital-m         ###   ########.fr       */
+/*   Updated: 2023/06/10 09:29:01 by pvital-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,8 +19,8 @@ static int	fractal_selector(t_win *screen, double real_part,
 		return (julia(screen, real_part, imaginary_part));
 	else if (screen->set == MANDELBROT)
 		return (mandelbrot(real_part, imaginary_part, screen));
-	else if (screen->set == LEAF)
-		return (leaf(real_part, imaginary_part, screen));
+	else if (screen->set == TRICORN)
+		return (tricorn(real_part, imaginary_part, screen));
 	return (0);
 }
 
@@ -44,7 +44,7 @@ void	build(t_win *screen)
 	int		y;
 	double	cr;
 	double	ci;
-	int		interactions;
+	float		interactions;
 
 	interactions = 0;
 	y = -1;
@@ -55,9 +55,9 @@ void	build(t_win *screen)
 		x = -1;
 		while (++x < WIDTH)
 		{
-			cr = set_value(screen->min_r, screen->max_r, x \
+			cr = set_value(screen->min_r, screen->max_r, x
 				+ screen->mouse->mouse_x, WIDTH - 1);
-			ci = set_value(screen->min_i, screen->max_i, y \
+			ci = set_value(screen->min_i, screen->max_i, y
 				+ screen->mouse->mouse_y, HEIGHT - 1);
 			interactions = fractal_selector(screen, cr, ci);
 			create_graph(screen, interactions, x, y);

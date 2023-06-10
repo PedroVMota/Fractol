@@ -6,13 +6,13 @@
 /*   By: pvital-m <pvital-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/09 21:10:38 by pvital-m          #+#    #+#             */
-/*   Updated: 2023/06/09 21:10:39 by pvital-m         ###   ########.fr       */
+/*   Updated: 2023/06/10 08:35:38 by pvital-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fractol.h"
 
-void	rainbow_palette(t_win *screen, int n, int x, int y)
+void	rainbow_palette(t_win *screen, float n, int x, int y)
 {
 	int		red;
 	int		green;
